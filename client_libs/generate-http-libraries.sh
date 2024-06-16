@@ -49,7 +49,7 @@ generate_client() {
             -i $spec_file \
             -g $lang \
             -o $OUTPUT_DIR \
-            --skip-validate-spec
+            # --skip-validate-spec
             # uncomment the above to ignore .schema.items is not of type `object` or
             # .schema.items is missing errors
 }
