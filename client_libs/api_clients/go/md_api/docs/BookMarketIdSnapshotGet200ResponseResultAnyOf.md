@@ -1,0 +1,129 @@
+# BookMarketIdSnapshotGet200ResponseResultAnyOf
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Levels** | [**[]BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner**](BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner.md) |  | 
+**LastTransactTime** | **int32** |  | 
+**LastTradePrice** | Pointer to **NullableInt32** |  | [optional] 
+**MarketState** | [**BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState**](BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState.md) |  | 
+
+## Methods
+
+### NewBookMarketIdSnapshotGet200ResponseResultAnyOf
+
+`func NewBookMarketIdSnapshotGet200ResponseResultAnyOf(levels []BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner, lastTransactTime int32, marketState BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState, ) *BookMarketIdSnapshotGet200ResponseResultAnyOf`
+
+NewBookMarketIdSnapshotGet200ResponseResultAnyOf instantiates a new BookMarketIdSnapshotGet200ResponseResultAnyOf object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewBookMarketIdSnapshotGet200ResponseResultAnyOfWithDefaults
+
+`func NewBookMarketIdSnapshotGet200ResponseResultAnyOfWithDefaults() *BookMarketIdSnapshotGet200ResponseResultAnyOf`
+
+NewBookMarketIdSnapshotGet200ResponseResultAnyOfWithDefaults instantiates a new BookMarketIdSnapshotGet200ResponseResultAnyOf object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetLevels
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLevels() []BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner`
+
+GetLevels returns the Levels field if non-nil, zero value otherwise.
+
+### GetLevelsOk
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLevelsOk() (*[]BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner, bool)`
+
+GetLevelsOk returns a tuple with the Levels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLevels
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) SetLevels(v []BookMarketIdSnapshotGet200ResponseResultAnyOfLevelsInner)`
+
+SetLevels sets Levels field to given value.
+
+
+### GetLastTransactTime
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLastTransactTime() int32`
+
+GetLastTransactTime returns the LastTransactTime field if non-nil, zero value otherwise.
+
+### GetLastTransactTimeOk
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLastTransactTimeOk() (*int32, bool)`
+
+GetLastTransactTimeOk returns a tuple with the LastTransactTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastTransactTime
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) SetLastTransactTime(v int32)`
+
+SetLastTransactTime sets LastTransactTime field to given value.
+
+
+### GetLastTradePrice
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLastTradePrice() int32`
+
+GetLastTradePrice returns the LastTradePrice field if non-nil, zero value otherwise.
+
+### GetLastTradePriceOk
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetLastTradePriceOk() (*int32, bool)`
+
+GetLastTradePriceOk returns a tuple with the LastTradePrice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastTradePrice
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) SetLastTradePrice(v int32)`
+
+SetLastTradePrice sets LastTradePrice field to given value.
+
+### HasLastTradePrice
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) HasLastTradePrice() bool`
+
+HasLastTradePrice returns a boolean if a field has been set.
+
+### SetLastTradePriceNil
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) SetLastTradePriceNil(b bool)`
+
+ SetLastTradePriceNil sets the value for LastTradePrice to be an explicit nil
+
+### UnsetLastTradePrice
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) UnsetLastTradePrice()`
+
+UnsetLastTradePrice ensures that no value is present for LastTradePrice, not even an explicit nil
+### GetMarketState
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetMarketState() BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState`
+
+GetMarketState returns the MarketState field if non-nil, zero value otherwise.
+
+### GetMarketStateOk
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) GetMarketStateOk() (*BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState, bool)`
+
+GetMarketStateOk returns a tuple with the MarketState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketState
+
+`func (o *BookMarketIdSnapshotGet200ResponseResultAnyOf) SetMarketState(v BookMarketIdSnapshotGet200ResponseResultAnyOfMarketState)`
+
+SetMarketState sets MarketState field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

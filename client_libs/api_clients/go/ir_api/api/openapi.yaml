@@ -1,0 +1,2967 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: support@cube.exchange
+    name: Cube
+    url: https://www.cube.exchange
+  title: Cube Iridium HTTP API
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /users/check:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/info:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_info_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccounts:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccounts_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_users_subaccounts_post_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccounts_post_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_users_subaccount__subaccount_id__patch_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccounts_post_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/positions:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__positions_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/transfers:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/withdrawals:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__withdrawals_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/orders:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: "Returns the most recent orders where `created_at < created_before`.\
+          \ If null, returns the most recent orders."
+        explode: true
+        in: query
+        name: createdBefore
+        required: false
+        schema:
+          description: "Returns the most recent orders where `created_at < created_before`.\
+            \ If null, returns the most recent orders."
+          format: int64
+          nullable: true
+          type: integer
+        style: form
+      - description: "The maximum number of orders to return. If null, defaults to\
+          \ 100. The maximum is 1000."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: "The maximum number of orders to return. If null, defaults\
+            \ to 100. The maximum is 1000."
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/fills:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: subaccount_id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: startTime
+        required: false
+        schema:
+          format: int64
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: endTime
+        required: false
+        schema:
+          format: int64
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: marketIds
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: orderIds
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__fills_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/fee-estimate/{market-id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: market-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_fee_estimate__market_id__get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/address:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: sourceIds
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: names
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_address_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/address/settings:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_address_settings_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /users/withdraw:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_users_withdraw_post_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_withdraw_post_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
+  /history/klines:
+    get:
+      description: |-
+        Statistics about the price of an asset during a specific time interval.
+        Fields are: [
+            time (in seconds since epoch),
+            open price,
+            high price,
+            low price,
+            close price,
+            volume (in RawUnits)
+        ]
+      parameters:
+      - explode: true
+        in: query
+        name: marketId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: interval
+        required: true
+        schema:
+          enum:
+          - 1s
+          - 1m
+          - 15m
+          - 1h
+          - 4h
+          - 1d
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: startTime
+        required: false
+        schema:
+          format: int64
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: endTime
+        required: false
+        schema:
+          format: int64
+          nullable: true
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: uint16
+          minimum: 0
+          nullable: true
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_history_klines_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      summary: Aggregated historical price data (klines)
+  /markets:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_markets_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      summary: "Fetch all asset, market, and source definitions"
+components:
+  headers:
+    x-cube-request-id:
+      description: "The cube-assigned ID for this request. If known, please supply\
+        \ with support requests"
+      example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+      explode: false
+      required: true
+      schema:
+        format: uuid
+        title: RequestId
+        type: string
+      style: simple
+  schemas:
+    _users_subaccount__subaccount_id__positions_get_200_response_result_value_inner_inner:
+      example:
+        amount: amount
+        assetId: 0
+        pendingDeposits: pendingDeposits
+        accountingType: liability
+        receivedAmount: receivedAmount
+      properties:
+        amount:
+          description: The cube-sequenced amount.
+          format: number
+          type: string
+        receivedAmount:
+          description: The on-chain amount according to the latest `received` block.
+          format: number
+          type: string
+        pendingDeposits:
+          format: number
+          type: string
+        assetId:
+          format: int32
+          type: integer
+        accountingType:
+          enum:
+          - liability
+          - receivable
+          - income
+          - asset
+          - loss
+          type: string
+      required:
+      - accountingType
+      - amount
+      - assetId
+      - pendingDeposits
+      - receivedAmount
+      type: object
+    _users_info_get_200_response:
+      example:
+        result:
+          mpcKeyId: 5
+          lastName: lastName
+          country: country
+          maxSubaccounts: 9
+          kycStatus:
+            key:
+              approved: true
+              level: 2
+              state: init
+          inviteId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          hasApprovedKyc: true
+          apiKeys:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            accessLevel: read
+            apiKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            isMasterKey: true
+            subaccountIds:
+            - 0
+            - 0
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            accessLevel: read
+            apiKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            isMasterKey: true
+            subaccountIds:
+            - 0
+            - 0
+          hasGuardianQuorum: true
+          points: 1
+          vipLevel: 6
+          firstName: firstName
+          phoneNumber: phoneNumber
+          referralCode: referralCode
+          guardianHasKey:
+          - hasKey: true
+            name: name
+            id: 5
+          - hasKey: true
+            name: name
+            id: 5
+          registration:
+            newlyStarted: true
+            windowSeconds: 7
+            startedAt: 2000-01-23T04:56:07.000+00:00
+          subaccounts:
+          - addresses:
+              "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+              "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+              "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+              "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+              "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+              "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+            hasOrderHistory: true
+            id: 48
+            name: working_capital
+          - addresses:
+              "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+              "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+              "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+              "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+              "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+              "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+            hasOrderHistory: true
+            id: 48
+            name: working_capital
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          email: email
+          status: waitlist
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_info_get_200_response_result'
+      required:
+      - result
+      type: object
+    _markets_get_200_response_result_sources_inner:
+      description: |-
+        A collection of assets grouped by origination.
+
+        For `Crypto` assets, this is their native blockchain.
+
+        e.g `ETH` and `SHIB` are both on the `ethereum` (`CHAIN_ID = 0x1`) blockchain.
+      example:
+        addressExplorer: "https://mempool.space/address/{}"
+        metadata:
+          network: Mainnet
+          scope: bitcoin
+          type: mainnet
+        name: bitcoin
+        sourceId: 1
+        transactionExplorer: "https://mempool.space/tx/{}"
+      properties:
+        sourceId:
+          description: The Cube-assigned source ID.
+          format: int32
+          type: integer
+        name:
+          description: A human-readable name for this source.
+          type: string
+        transactionExplorer:
+          description: |-
+            The URL of a block explorer that can be used to view transactions.
+
+            The value is provided as a format string with a single `{}` placeholder for the transaction. e.g `https://etherscan.io/tx/{}`
+          nullable: true
+          type: string
+        addressExplorer:
+          description: |-
+            The URL of a block explorer that can be used to view addresses.
+
+            The value is provided as a format string with a single `{}` placeholder for the address. e.g `https://etherscan.io/address/{}`
+          nullable: true
+          type: string
+        metadata:
+          description: Additional metadata about this source.
+      required:
+      - metadata
+      - name
+      - sourceId
+      type: object
+    _markets_get_200_response_result_markets_inner:
+      description: A market is identified by its unique `marketId`. The market definition
+        specifies specifies the base and quote assets and their respective lot sizes
+        for the particular market.
+      example:
+        baseAssetId: 2
+        baseLotSize: "1000000000000000"
+        baseMarketIds:
+        - 100004
+        - 100005
+        feeTableId: 1
+        isImplied: true
+        isPrimary: true
+        marketId: 100001
+        minOrderQty: 10
+        priceBandAskPct: 500
+        priceBandBidPct: 20
+        priceDisplayDecimals: 5
+        priceTickSize: "0.00001"
+        protectionPriceLevels: 1000
+        quantityTickSize: "0.001"
+        quoteAssetId: 1
+        quoteLotSize: "1"
+        status: 1
+        symbol: ETHBTC
+      properties:
+        marketId:
+          description: The Cube-assigned market ID.
+          format: uint64
+          minimum: 0
+          type: integer
+        symbol:
+          description: |-
+            The market's symbol. Normally this is base symbol concatenated with the quote symbol.
+
+            e.g `BTCUSDC`
+          type: string
+        baseAssetId:
+          description: The asset ID of the base asset.
+          format: uint64
+          minimum: 0
+          type: integer
+        baseLotSize:
+          description: The number of units of the base asset that are represented
+            by one base lot.
+          type: string
+        quoteAssetId:
+          description: The asset ID of the quote asset.
+          format: uint64
+          minimum: 0
+          type: integer
+        quoteLotSize:
+          description: The number of units of the quote asset that are represented
+            by one quote lot.
+          type: string
+        priceDisplayDecimals:
+          description: The default number of decimal places to display for human-readable
+            prices for this market.
+          format: int32
+          type: integer
+        protectionPriceLevels:
+          format: uint64
+          minimum: 0
+          type: integer
+        priceBandBidPct:
+          description: The percentage that a new bid can be placed below the current
+            reference price.
+          format: uint32
+          minimum: 0
+          nullable: true
+          type: integer
+        priceBandAskPct:
+          description: The percentage that a new ask can be placed above the current
+            reference price.
+          format: uint32
+          minimum: 0
+          nullable: true
+          type: integer
+        minOrderQty:
+          description: The minimum order quantity lots for this market. Inclusive.
+          format: int64
+          nullable: true
+          type: integer
+        maxOrderQty:
+          description: The maximum order quantity lots for this market. Inclusive.
+          format: int64
+          nullable: true
+          type: integer
+        priceTickSize:
+          description: The human-readable minimum price increment.
+          type: string
+        quantityTickSize:
+          description: The human-readable minimum quantity increment.
+          type: string
+        feeTableId:
+          description: ID of the fee table that will be used for lookups on this market.
+          format: uint64
+          minimum: 0
+          type: integer
+        baseMarketIds:
+          description: "If this is an implied market, this is the list of implied-through\
+            \ base markets. Otherwise, this is `None`."
+          items:
+            format: uint64
+            minimum: 0
+            type: integer
+          nullable: true
+          type: array
+        isImplied:
+          description: "If this market is currently enabled for implied matching,\
+            \ this will be `true`. Otherwise, this will be `false` or missing."
+          type: boolean
+      required:
+      - baseAssetId
+      - baseLotSize
+      - feeTableId
+      - isImplied
+      - marketId
+      - priceDisplayDecimals
+      - priceTickSize
+      - protectionPriceLevels
+      - quantityTickSize
+      - quoteAssetId
+      - quoteLotSize
+      - symbol
+      type: object
+    _users_subaccount__subaccount_id__patch_request:
+      properties:
+        name:
+          type: string
+      required:
+      - name
+      type: object
+    _users_withdraw_post_request:
+      properties:
+        subaccountId:
+          description: The subaccount to withdraw from.
+          format: uint64
+          minimum: 0
+          type: integer
+        assetId:
+          description: The asset to withdraw. The network is determined by the asset
+            ID.
+          format: uint64
+          minimum: 0
+          type: integer
+        amount:
+          description: "The amount to withdraw. This is denominated in the smallest\
+            \ unit of the asset (e.g. satoshis for BTC, wei for ETH, lamports for\
+            \ SOL). The amount must be greater than the dust limit for the asset."
+          format: uint128
+          minimum: 0
+          type: integer
+        destination:
+          description: The destination address for the withdrawal.
+          type: string
+      required:
+      - amount
+      - assetId
+      - destination
+      - subaccountId
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response_result_withdrawals_value_inner_inner:
+      example:
+        txnHash: txnHash
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        reason: reason
+        amount: amount
+        approved: true
+        address: address
+        assetId: 1
+        txnState: pending
+        txnIndex: 5
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        attemptId: 5
+      properties:
+        assetId:
+          format: int32
+          type: integer
+        amount:
+          format: number
+          type: string
+        txnHash:
+          description: "Once the transaction has been determined / sent, `txn_hash`,\
+            \ `txn_index`, and `txn_state` will be populated"
+          nullable: true
+          type: string
+        txnIndex:
+          format: int64
+          nullable: true
+          type: integer
+        txnState:
+          enum:
+          - pending
+          - received
+          - confirmed
+          - dropped
+          - failed
+          nullable: true
+          type: string
+        createdAt:
+          description: When the withdrawal request was created.
+          format: date-time
+          type: string
+        updatedAt:
+          description: When the withdrawal was sent out.
+          format: date-time
+          type: string
+        attemptId:
+          description: A unique identifier for this withdrawal request.
+          format: int64
+          type: integer
+        address:
+          description: The withdrawal destination address
+          type: string
+        approved:
+          nullable: true
+          type: boolean
+        reason:
+          nullable: true
+          type: string
+      required:
+      - address
+      - amount
+      - assetId
+      - attemptId
+      - createdAt
+      - updatedAt
+      type: object
+    _markets_get_200_response:
+      example:
+        result:
+          markets:
+          - baseAssetId: 2
+            baseLotSize: "1000000000000000"
+            baseMarketIds:
+            - 100004
+            - 100005
+            feeTableId: 1
+            isImplied: true
+            isPrimary: true
+            marketId: 100001
+            minOrderQty: 10
+            priceBandAskPct: 500
+            priceBandBidPct: 20
+            priceDisplayDecimals: 5
+            priceTickSize: "0.00001"
+            protectionPriceLevels: 1000
+            quantityTickSize: "0.001"
+            quoteAssetId: 1
+            quoteLotSize: "1"
+            status: 1
+            symbol: ETHBTC
+          - baseAssetId: 2
+            baseLotSize: "1000000000000000"
+            baseMarketIds:
+            - 100004
+            - 100005
+            feeTableId: 1
+            isImplied: true
+            isPrimary: true
+            marketId: 100001
+            minOrderQty: 10
+            priceBandAskPct: 500
+            priceBandBidPct: 20
+            priceDisplayDecimals: 5
+            priceTickSize: "0.00001"
+            protectionPriceLevels: 1000
+            quantityTickSize: "0.001"
+            quoteAssetId: 1
+            quoteLotSize: "1"
+            status: 1
+            symbol: ETHBTC
+          assets:
+          - assetId: 1
+            assetType: Crypto
+            decimals: 8
+            displayDecimals: 5
+            metadata: {}
+            settles: true
+            sourceId: 1
+            status: 1
+            symbol: BTC
+          - assetId: 1
+            assetType: Crypto
+            decimals: 8
+            displayDecimals: 5
+            metadata: {}
+            settles: true
+            sourceId: 1
+            status: 1
+            symbol: BTC
+          sources:
+          - addressExplorer: "https://mempool.space/address/{}"
+            metadata:
+              network: Mainnet
+              scope: bitcoin
+              type: mainnet
+            name: bitcoin
+            sourceId: 1
+            transactionExplorer: "https://mempool.space/tx/{}"
+          - addressExplorer: "https://mempool.space/address/{}"
+            metadata:
+              network: Mainnet
+              scope: bitcoin
+              type: mainnet
+            name: bitcoin
+            sourceId: 1
+            transactionExplorer: "https://mempool.space/tx/{}"
+          feeTables:
+          - feeTableId: 1
+            feeTiers:
+            - makerFeeRatio: 4.0E-4
+              priority: 1
+              takerFeeRatio: 8.0E-4
+          - feeTableId: 1
+            feeTiers:
+            - makerFeeRatio: 4.0E-4
+              priority: 1
+              takerFeeRatio: 8.0E-4
+      properties:
+        result:
+          $ref: '#/components/schemas/_markets_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_subaccounts_post_request:
+      properties:
+        name:
+          type: string
+        accountType:
+          enum:
+          - spot
+          - margin
+          type: string
+      required:
+      - accountType
+      - name
+      type: object
+    _users_subaccount__subaccount_id__get_200_response:
+      example:
+        result:
+          addresses:
+            "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+            "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+            "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+            "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+            "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+            "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+          hasOrderHistory: true
+          id: 48
+          name: working_capital
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_info_get_200_response_result_subaccounts_inner'
+      required:
+      - result
+      type: object
+    _users_check_get_500_response:
+      example:
+        error: example error string
+      properties:
+        error:
+          type: string
+      required:
+      - error
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response_result:
+      example:
+        deposits:
+          key:
+            name: name
+            inner:
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              amount: amount
+              address: address
+              assetId: 0
+              txnState: pending
+              timeEst: 2000-01-23T04:56:07.000+00:00
+              fiatToCrypto: true
+              txnIndex: 6
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              amount: amount
+              address: address
+              assetId: 0
+              txnState: pending
+              timeEst: 2000-01-23T04:56:07.000+00:00
+              fiatToCrypto: true
+              txnIndex: 6
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+        withdrawals:
+          key:
+            name: name
+            inner:
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              reason: reason
+              amount: amount
+              approved: true
+              address: address
+              assetId: 1
+              txnState: pending
+              txnIndex: 5
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+              attemptId: 5
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              reason: reason
+              amount: amount
+              approved: true
+              address: address
+              assetId: 1
+              txnState: pending
+              txnIndex: 5
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+              attemptId: 5
+      properties:
+        deposits:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_deposits_value'
+          type: object
+        withdrawals:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_withdrawals_value'
+          type: object
+      required:
+      - deposits
+      - withdrawals
+      type: object
+    _users_subaccounts_get_200_response_result:
+      example:
+        ids:
+        - 0
+        - 0
+      properties:
+        ids:
+          items:
+            format: int64
+            type: integer
+          type: array
+      required:
+      - ids
+      type: object
+    _users_subaccount__subaccount_id__withdrawals_get_200_response:
+      example:
+        result:
+          key:
+            name: name
+            inner:
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              reason: reason
+              amount: amount
+              approved: true
+              address: address
+              assetId: 1
+              txnState: pending
+              txnIndex: 5
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+              attemptId: 5
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              reason: reason
+              amount: amount
+              approved: true
+              address: address
+              assetId: 1
+              txnState: pending
+              txnIndex: 5
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+              attemptId: 5
+      properties:
+        result:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_withdrawals_value'
+          type: object
+      required:
+      - result
+      type: object
+    _users_info_get_200_response_result_apiKeys_inner:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        accessLevel: read
+        apiKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        isMasterKey: true
+        subaccountIds:
+        - 0
+        - 0
+      properties:
+        isMasterKey:
+          type: boolean
+        subaccountIds:
+          items:
+            format: int64
+            type: integer
+          type: array
+        accessLevel:
+          enum:
+          - read
+          - write
+          type: string
+        apiKey:
+          format: uuid
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - accessLevel
+      - apiKey
+      - createdAt
+      - isMasterKey
+      - subaccountIds
+      type: object
+    _users_check_get_200_response:
+      example:
+        result:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_check_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_fee_estimate__market_id__get_200_response:
+      example:
+        result:
+          takerFeeRatio: 1.4658129805029452
+          makerFeeRatio: 6.027456183070403
+          userKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          marketId: 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_fee_estimate__market_id__get_200_response_result'
+      required:
+      - result
+      type: object
+    _markets_get_200_response_result_assets_inner:
+      example:
+        assetId: 1
+        assetType: Crypto
+        decimals: 8
+        displayDecimals: 5
+        metadata: {}
+        settles: true
+        sourceId: 1
+        status: 1
+        symbol: BTC
+      properties:
+        assetId:
+          description: The Cube-assigned asset ID.
+          format: uint64
+          minimum: 0
+          type: integer
+        symbol:
+          description: The canonical symbol for this asset.
+          type: string
+        decimals:
+          description: |-
+            The maximum precision of this asset.
+
+            e.g `18` for ETH (`10^18` WEI per ETH), `8` for BTC (`10^8` SAT per BTC)
+          format: int32
+          type: integer
+        displayDecimals:
+          description: The default number of decimal places to display for human-readable
+            quantities for this asset.
+          format: int32
+          type: integer
+        settles:
+          description: Whether this asset settles to the blockchain.
+          type: boolean
+        assetType:
+          description: The type of this asset.
+          enum:
+          - Fiat
+          - Crypto
+          type: string
+        sourceId:
+          description: The source ID of this asset.
+          format: int32
+          type: integer
+        metadata:
+          description: Additional metadata about this asset.
+      required:
+      - assetId
+      - assetType
+      - decimals
+      - displayDecimals
+      - metadata
+      - settles
+      - sourceId
+      - symbol
+      type: object
+    _users_subaccount__subaccount_id__fills_get_200_response_result:
+      example:
+        name: name
+        fills:
+        - feeAmount: feeAmount
+          side: Bid
+          aggressingSide: Bid
+          quantity: 5
+          orderId: 1
+          feeAssetId: 2
+          price: 5
+          filledAt: 7
+          quoteAmount: quoteAmount
+          tradeId: 6
+          baseAmount: baseAmount
+          marketId: 0
+        - feeAmount: feeAmount
+          side: Bid
+          aggressingSide: Bid
+          quantity: 5
+          orderId: 1
+          feeAssetId: 2
+          price: 5
+          filledAt: 7
+          quoteAmount: quoteAmount
+          tradeId: 6
+          baseAmount: baseAmount
+          marketId: 0
+      properties:
+        name:
+          type: string
+        fills:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__fills_get_200_response_result_fills_inner'
+          type: array
+      required:
+      - fills
+      - name
+      type: object
+    _users_subaccounts_post_200_response_result:
+      example:
+        id: 0
+      properties:
+        id:
+          format: int64
+          type: integer
+      required:
+      - id
+      type: object
+    _users_withdraw_post_200_response:
+      example:
+        result:
+          reason: reason
+          approved: true
+          status: pending
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_withdraw_post_200_response_result'
+      required:
+      - result
+      type: object
+    _markets_get_200_response_result_feeTables_inner:
+      description: A fee table consisting of one or more fee tiers. Each tier is applied
+        in priority order and the first tier whose requirements match the characteristics
+        of a given fill determines the fees for that fill. Each market is associated
+        with a specific fee table via its "feeTableId".
+      example:
+        feeTableId: 1
+        feeTiers:
+        - makerFeeRatio: 4.0E-4
+          priority: 1
+          takerFeeRatio: 8.0E-4
+      properties:
+        feeTableId:
+          format: uint64
+          minimum: 0
+          type: integer
+        feeTiers:
+          items:
+            $ref: '#/components/schemas/_markets_get_200_response_result_feeTables_inner_feeTiers_inner'
+          type: array
+      required:
+      - feeTableId
+      - feeTiers
+      type: object
+    _users_info_get_200_response_result:
+      example:
+        mpcKeyId: 5
+        lastName: lastName
+        country: country
+        maxSubaccounts: 9
+        kycStatus:
+          key:
+            approved: true
+            level: 2
+            state: init
+        inviteId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        hasApprovedKyc: true
+        apiKeys:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          accessLevel: read
+          apiKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          isMasterKey: true
+          subaccountIds:
+          - 0
+          - 0
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          accessLevel: read
+          apiKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          isMasterKey: true
+          subaccountIds:
+          - 0
+          - 0
+        hasGuardianQuorum: true
+        points: 1
+        vipLevel: 6
+        firstName: firstName
+        phoneNumber: phoneNumber
+        referralCode: referralCode
+        guardianHasKey:
+        - hasKey: true
+          name: name
+          id: 5
+        - hasKey: true
+          name: name
+          id: 5
+        registration:
+          newlyStarted: true
+          windowSeconds: 7
+          startedAt: 2000-01-23T04:56:07.000+00:00
+        subaccounts:
+        - addresses:
+            "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+            "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+            "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+            "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+            "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+            "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+          hasOrderHistory: true
+          id: 48
+          name: working_capital
+        - addresses:
+            "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+            "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+            "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+            "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+            "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+            "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+          hasOrderHistory: true
+          id: 48
+          name: working_capital
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        email: email
+        status: waitlist
+      properties:
+        apiKeys:
+          items:
+            $ref: '#/components/schemas/_users_info_get_200_response_result_apiKeys_inner'
+          type: array
+        subaccounts:
+          items:
+            $ref: '#/components/schemas/_users_info_get_200_response_result_subaccounts_inner'
+          type: array
+        id:
+          format: uuid
+          type: string
+        email:
+          type: string
+        status:
+          enum:
+          - waitlist
+          - active
+          - disabled
+          type: string
+        vipLevel:
+          format: int32
+          type: integer
+        points:
+          format: int64
+          type: integer
+        mpcKeyId:
+          format: int64
+          nullable: true
+          type: integer
+        guardianHasKey:
+          items:
+            $ref: '#/components/schemas/_users_info_get_200_response_result_guardianHasKey_inner'
+          nullable: true
+          type: array
+        hasGuardianQuorum:
+          type: boolean
+        phoneNumber:
+          nullable: true
+          type: string
+        kycStatus:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_info_get_200_response_result_kycStatus_value'
+          type: object
+        hasApprovedKyc:
+          type: boolean
+        registration:
+          $ref: '#/components/schemas/_users_info_get_200_response_result_registration'
+        firstName:
+          nullable: true
+          type: string
+        lastName:
+          nullable: true
+          type: string
+        country:
+          nullable: true
+          type: string
+        inviteId:
+          format: uuid
+          nullable: true
+          type: string
+        referralCode:
+          nullable: true
+          type: string
+        maxSubaccounts:
+          format: int32
+          type: integer
+      required:
+      - apiKeys
+      - email
+      - hasApprovedKyc
+      - hasGuardianQuorum
+      - id
+      - kycStatus
+      - maxSubaccounts
+      - points
+      - status
+      - subaccounts
+      - vipLevel
+      type: object
+    _history_klines_get_200_response:
+      example:
+        result:
+        - - 1710944100
+          - 17263
+          - 17509
+          - 17247
+          - 17459
+          - "23107"
+        - - 1710943200
+          - 17203
+          - 17314
+          - 17156
+          - 17260
+          - "55426"
+      properties:
+        result:
+          example:
+          - - 1710944100
+            - 17263
+            - 17509
+            - 17247
+            - 17459
+            - "23107"
+          - - 1710943200
+            - 17203
+            - 17314
+            - 17156
+            - 17260
+            - "55426"
+          items:
+            items:
+              description: TODO default missing array inner type to string
+              type: string
+            maxItems: 6
+            minItems: 6
+            type: array
+          type: array
+      required:
+      - result
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response_result_deposits_value:
+      example:
+        name: name
+        inner:
+        - txnHash: txnHash
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          amount: amount
+          address: address
+          assetId: 0
+          txnState: pending
+          timeEst: 2000-01-23T04:56:07.000+00:00
+          fiatToCrypto: true
+          txnIndex: 6
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - txnHash: txnHash
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          amount: amount
+          address: address
+          assetId: 0
+          txnState: pending
+          timeEst: 2000-01-23T04:56:07.000+00:00
+          fiatToCrypto: true
+          txnIndex: 6
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          type: string
+        inner:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_deposits_value_inner_inner'
+          type: array
+      required:
+      - inner
+      - name
+      type: object
+    _users_address_get_200_response:
+      example:
+        result:
+          settings:
+            whitelistStatus: pending
+            whitelisted: true
+          addresses:
+          - sourceId: 0
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            address: address
+            activeSince: 2000-01-23T04:56:07.000+00:00
+            assetId: 6
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            approvedAt: 2000-01-23T04:56:07.000+00:00
+            status: pending
+          - sourceId: 0
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            address: address
+            activeSince: 2000-01-23T04:56:07.000+00:00
+            assetId: 6
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            approvedAt: 2000-01-23T04:56:07.000+00:00
+            status: pending
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_address_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_filledTotal:
+      example:
+        feeAmount: feeAmount
+        feeAssetId: 3
+        filledAt: 2
+        quoteAmount: quoteAmount
+        baseAmount: baseAmount
+      nullable: true
+      properties:
+        baseAmount:
+          format: number
+          type: string
+        quoteAmount:
+          format: number
+          type: string
+        feeAmount:
+          format: number
+          type: string
+        feeAssetId:
+          format: int32
+          nullable: true
+          type: integer
+        filledAt:
+          format: int64
+          type: integer
+      required:
+      - baseAmount
+      - feeAmount
+      - filledAt
+      - quoteAmount
+      type: object
+    _users_address_get_200_response_result_addresses_inner:
+      example:
+        sourceId: 0
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        address: address
+        activeSince: 2000-01-23T04:56:07.000+00:00
+        assetId: 6
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        approvedAt: 2000-01-23T04:56:07.000+00:00
+        status: pending
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        sourceId:
+          format: int32
+          type: integer
+        assetId:
+          format: int32
+          nullable: true
+          type: integer
+        address:
+          type: string
+        status:
+          enum:
+          - pending
+          - approved
+          - active
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        approvedAt:
+          format: date-time
+          type: string
+        activeSince:
+          format: date-time
+          type: string
+      required:
+      - activeSince
+      - address
+      - approvedAt
+      - createdAt
+      - id
+      - name
+      - sourceId
+      - status
+      type: object
+    _markets_get_200_response_result_feeTables_inner_feeTiers_inner:
+      description: A single row in a FeeTable.
+      example:
+        makerFeeRatio: 4.0E-4
+        priority: 1
+        takerFeeRatio: 8.0E-4
+      properties:
+        priority:
+          description: The order in which this tier is considered when applying the
+            fee table that contains it.
+          format: uint64
+          minimum: 0
+          type: integer
+        makerFeeRatio:
+          description: The multiplicative fee ratio for the resting order
+          format: double
+          type: number
+        takerFeeRatio:
+          description: The multiplicative fee ratio for the aggressing order
+          format: double
+          type: number
+      required:
+      - makerFeeRatio
+      - priority
+      - takerFeeRatio
+      type: object
+    _markets_get_200_response_result:
+      example:
+        markets:
+        - baseAssetId: 2
+          baseLotSize: "1000000000000000"
+          baseMarketIds:
+          - 100004
+          - 100005
+          feeTableId: 1
+          isImplied: true
+          isPrimary: true
+          marketId: 100001
+          minOrderQty: 10
+          priceBandAskPct: 500
+          priceBandBidPct: 20
+          priceDisplayDecimals: 5
+          priceTickSize: "0.00001"
+          protectionPriceLevels: 1000
+          quantityTickSize: "0.001"
+          quoteAssetId: 1
+          quoteLotSize: "1"
+          status: 1
+          symbol: ETHBTC
+        - baseAssetId: 2
+          baseLotSize: "1000000000000000"
+          baseMarketIds:
+          - 100004
+          - 100005
+          feeTableId: 1
+          isImplied: true
+          isPrimary: true
+          marketId: 100001
+          minOrderQty: 10
+          priceBandAskPct: 500
+          priceBandBidPct: 20
+          priceDisplayDecimals: 5
+          priceTickSize: "0.00001"
+          protectionPriceLevels: 1000
+          quantityTickSize: "0.001"
+          quoteAssetId: 1
+          quoteLotSize: "1"
+          status: 1
+          symbol: ETHBTC
+        assets:
+        - assetId: 1
+          assetType: Crypto
+          decimals: 8
+          displayDecimals: 5
+          metadata: {}
+          settles: true
+          sourceId: 1
+          status: 1
+          symbol: BTC
+        - assetId: 1
+          assetType: Crypto
+          decimals: 8
+          displayDecimals: 5
+          metadata: {}
+          settles: true
+          sourceId: 1
+          status: 1
+          symbol: BTC
+        sources:
+        - addressExplorer: "https://mempool.space/address/{}"
+          metadata:
+            network: Mainnet
+            scope: bitcoin
+            type: mainnet
+          name: bitcoin
+          sourceId: 1
+          transactionExplorer: "https://mempool.space/tx/{}"
+        - addressExplorer: "https://mempool.space/address/{}"
+          metadata:
+            network: Mainnet
+            scope: bitcoin
+            type: mainnet
+          name: bitcoin
+          sourceId: 1
+          transactionExplorer: "https://mempool.space/tx/{}"
+        feeTables:
+        - feeTableId: 1
+          feeTiers:
+          - makerFeeRatio: 4.0E-4
+            priority: 1
+            takerFeeRatio: 8.0E-4
+        - feeTableId: 1
+          feeTiers:
+          - makerFeeRatio: 4.0E-4
+            priority: 1
+            takerFeeRatio: 8.0E-4
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/_markets_get_200_response_result_assets_inner'
+          type: array
+        sources:
+          items:
+            $ref: '#/components/schemas/_markets_get_200_response_result_sources_inner'
+          type: array
+        markets:
+          items:
+            $ref: '#/components/schemas/_markets_get_200_response_result_markets_inner'
+          type: array
+        feeTables:
+          items:
+            $ref: '#/components/schemas/_markets_get_200_response_result_feeTables_inner'
+          type: array
+      required:
+      - assets
+      - feeTables
+      - markets
+      - sources
+      type: object
+    _users_info_get_200_response_result_registration:
+      example:
+        newlyStarted: true
+        windowSeconds: 7
+        startedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        newlyStarted:
+          type: boolean
+        startedAt:
+          format: date-time
+          type: string
+        windowSeconds:
+          format: int32
+          type: integer
+      required:
+      - newlyStarted
+      - startedAt
+      - windowSeconds
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response:
+      example:
+        result:
+          deposits:
+            key:
+              name: name
+              inner:
+              - txnHash: txnHash
+                createdAt: 2000-01-23T04:56:07.000+00:00
+                amount: amount
+                address: address
+                assetId: 0
+                txnState: pending
+                timeEst: 2000-01-23T04:56:07.000+00:00
+                fiatToCrypto: true
+                txnIndex: 6
+                updatedAt: 2000-01-23T04:56:07.000+00:00
+              - txnHash: txnHash
+                createdAt: 2000-01-23T04:56:07.000+00:00
+                amount: amount
+                address: address
+                assetId: 0
+                txnState: pending
+                timeEst: 2000-01-23T04:56:07.000+00:00
+                fiatToCrypto: true
+                txnIndex: 6
+                updatedAt: 2000-01-23T04:56:07.000+00:00
+          withdrawals:
+            key:
+              name: name
+              inner:
+              - txnHash: txnHash
+                createdAt: 2000-01-23T04:56:07.000+00:00
+                reason: reason
+                amount: amount
+                approved: true
+                address: address
+                assetId: 1
+                txnState: pending
+                txnIndex: 5
+                updatedAt: 2000-01-23T04:56:07.000+00:00
+                attemptId: 5
+              - txnHash: txnHash
+                createdAt: 2000-01-23T04:56:07.000+00:00
+                reason: reason
+                amount: amount
+                approved: true
+                address: address
+                assetId: 1
+                txnState: pending
+                txnIndex: 5
+                updatedAt: 2000-01-23T04:56:07.000+00:00
+                attemptId: 5
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response_result_withdrawals_value:
+      example:
+        name: name
+        inner:
+        - txnHash: txnHash
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          reason: reason
+          amount: amount
+          approved: true
+          address: address
+          assetId: 1
+          txnState: pending
+          txnIndex: 5
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          attemptId: 5
+        - txnHash: txnHash
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          reason: reason
+          amount: amount
+          approved: true
+          address: address
+          assetId: 1
+          txnState: pending
+          txnIndex: 5
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          attemptId: 5
+      properties:
+        name:
+          type: string
+        inner:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_withdrawals_value_inner_inner'
+          type: array
+      required:
+      - inner
+      - name
+      type: object
+    _users_subaccount__subaccount_id__positions_get_200_response:
+      example:
+        result:
+          key:
+            name: name
+            inner:
+            - amount: amount
+              assetId: 0
+              pendingDeposits: pendingDeposits
+              accountingType: liability
+              receivedAmount: receivedAmount
+            - amount: amount
+              assetId: 0
+              pendingDeposits: pendingDeposits
+              accountingType: liability
+              receivedAmount: receivedAmount
+      properties:
+        result:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__positions_get_200_response_result_value'
+          type: object
+      required:
+      - result
+      type: object
+    _users_check_get_200_response_result:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    _users_subaccount__subaccount_id__fills_get_200_response:
+      example:
+        result:
+          name: name
+          fills:
+          - feeAmount: feeAmount
+            side: Bid
+            aggressingSide: Bid
+            quantity: 5
+            orderId: 1
+            feeAssetId: 2
+            price: 5
+            filledAt: 7
+            quoteAmount: quoteAmount
+            tradeId: 6
+            baseAmount: baseAmount
+            marketId: 0
+          - feeAmount: feeAmount
+            side: Bid
+            aggressingSide: Bid
+            quantity: 5
+            orderId: 1
+            feeAssetId: 2
+            price: 5
+            filledAt: 7
+            quoteAmount: quoteAmount
+            tradeId: 6
+            baseAmount: baseAmount
+            marketId: 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_subaccount__subaccount_id__fills_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_subaccount__subaccount_id__positions_get_200_response_result_value:
+      example:
+        name: name
+        inner:
+        - amount: amount
+          assetId: 0
+          pendingDeposits: pendingDeposits
+          accountingType: liability
+          receivedAmount: receivedAmount
+        - amount: amount
+          assetId: 0
+          pendingDeposits: pendingDeposits
+          accountingType: liability
+          receivedAmount: receivedAmount
+      properties:
+        name:
+          type: string
+        inner:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__positions_get_200_response_result_value_inner_inner'
+          type: array
+      required:
+      - inner
+      - name
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_modifies_inner:
+      example:
+        quantity: 0
+        price: 0
+        modifiedAt: 6
+      properties:
+        price:
+          format: uint64
+          minimum: 0
+          type: integer
+        quantity:
+          format: uint64
+          minimum: 0
+          type: integer
+        modifiedAt:
+          format: int64
+          type: integer
+      required:
+      - modifiedAt
+      - price
+      - quantity
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_fills_inner:
+      example:
+        feeAmount: feeAmount
+        baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        baseSettled: true
+        quoteSettled: true
+        feeAssetId: 7
+        filledAt: 1
+        quoteAmount: quoteAmount
+        quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tradeId: 4
+        baseAmount: baseAmount
+      properties:
+        tradeId:
+          format: int64
+          type: integer
+        baseBatchId:
+          format: uuid
+          nullable: true
+          type: string
+        quoteBatchId:
+          format: uuid
+          nullable: true
+          type: string
+        baseSettled:
+          type: boolean
+        quoteSettled:
+          type: boolean
+        baseAmount:
+          format: number
+          type: string
+        quoteAmount:
+          format: number
+          type: string
+        feeAmount:
+          format: number
+          type: string
+        feeAssetId:
+          format: int32
+          nullable: true
+          type: integer
+        filledAt:
+          format: int64
+          type: integer
+      required:
+      - baseAmount
+      - baseSettled
+      - feeAmount
+      - filledAt
+      - marketId
+      - orderId
+      - quoteAmount
+      - quoteSettled
+      - tradeId
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response_result:
+      example:
+        name: name
+        orders:
+        - selfTradePrevention: 5
+          reason: reason
+          orderType: 4
+          side: Bid
+          orderId: 0
+          modifiedAt: 2
+          settled: true
+          filledAt: 9
+          clientOrderId: 0
+          filledTotal:
+            feeAmount: feeAmount
+            feeAssetId: 3
+            filledAt: 2
+            quoteAmount: quoteAmount
+            baseAmount: baseAmount
+          modifies:
+          - quantity: 0
+            price: 0
+            modifiedAt: 6
+          - quantity: 0
+            price: 0
+            modifiedAt: 6
+          cancelOnDisconnect: true
+          marketId: 6
+          postOnly: true
+          createdAt: 5
+          canceledAt: 7
+          price: 0
+          qty: 0
+          timeInForce: 1
+          fills:
+          - feeAmount: feeAmount
+            baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            baseSettled: true
+            quoteSettled: true
+            feeAssetId: 7
+            filledAt: 1
+            quoteAmount: quoteAmount
+            quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tradeId: 4
+            baseAmount: baseAmount
+          - feeAmount: feeAmount
+            baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            baseSettled: true
+            quoteSettled: true
+            feeAssetId: 7
+            filledAt: 1
+            quoteAmount: quoteAmount
+            quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tradeId: 4
+            baseAmount: baseAmount
+          status: open
+        - selfTradePrevention: 5
+          reason: reason
+          orderType: 4
+          side: Bid
+          orderId: 0
+          modifiedAt: 2
+          settled: true
+          filledAt: 9
+          clientOrderId: 0
+          filledTotal:
+            feeAmount: feeAmount
+            feeAssetId: 3
+            filledAt: 2
+            quoteAmount: quoteAmount
+            baseAmount: baseAmount
+          modifies:
+          - quantity: 0
+            price: 0
+            modifiedAt: 6
+          - quantity: 0
+            price: 0
+            modifiedAt: 6
+          cancelOnDisconnect: true
+          marketId: 6
+          postOnly: true
+          createdAt: 5
+          canceledAt: 7
+          price: 0
+          qty: 0
+          timeInForce: 1
+          fills:
+          - feeAmount: feeAmount
+            baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            baseSettled: true
+            quoteSettled: true
+            feeAssetId: 7
+            filledAt: 1
+            quoteAmount: quoteAmount
+            quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tradeId: 4
+            baseAmount: baseAmount
+          - feeAmount: feeAmount
+            baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            baseSettled: true
+            quoteSettled: true
+            feeAssetId: 7
+            filledAt: 1
+            quoteAmount: quoteAmount
+            quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tradeId: 4
+            baseAmount: baseAmount
+          status: open
+      properties:
+        name:
+          type: string
+        orders:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner'
+          type: array
+      required:
+      - name
+      - orders
+      type: object
+    _users_address_settings_get_200_response:
+      example:
+        result:
+          whitelistStatus: pending
+          whitelisted: true
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_address_get_200_response_result_settings'
+      required:
+      - result
+      type: object
+    _users_info_get_200_response_result_kycStatus_value:
+      example:
+        approved: true
+        level: 2
+        state: init
+      properties:
+        level:
+          format: int32
+          type: integer
+        state:
+          enum:
+          - init
+          - pending
+          - prechecked
+          - queued
+          - onHold
+          - completed
+          type: string
+        approved:
+          type: boolean
+      required:
+      - approved
+      - level
+      - state
+      type: object
+    _users_subaccount__subaccount_id__fills_get_200_response_result_fills_inner:
+      example:
+        feeAmount: feeAmount
+        side: Bid
+        aggressingSide: Bid
+        quantity: 5
+        orderId: 1
+        feeAssetId: 2
+        price: 5
+        filledAt: 7
+        quoteAmount: quoteAmount
+        tradeId: 6
+        baseAmount: baseAmount
+        marketId: 0
+      properties:
+        marketId:
+          format: int32
+          type: integer
+        tradeId:
+          format: int64
+          type: integer
+        orderId:
+          format: int64
+          type: integer
+        side:
+          enum:
+          - Bid
+          - Ask
+          type: string
+        aggressingSide:
+          enum:
+          - Bid
+          - Ask
+          nullable: true
+          type: string
+        price:
+          format: int64
+          nullable: true
+          type: integer
+        quantity:
+          format: int64
+          nullable: true
+          type: integer
+        baseAmount:
+          format: number
+          type: string
+        quoteAmount:
+          format: number
+          type: string
+        feeAmount:
+          format: number
+          type: string
+        feeAssetId:
+          format: int32
+          nullable: true
+          type: integer
+        filledAt:
+          format: int64
+          type: integer
+      required:
+      - baseAmount
+      - feeAmount
+      - filledAt
+      - marketId
+      - orderId
+      - quoteAmount
+      - side
+      - tradeId
+      type: object
+    _users_info_get_200_response_result_guardianHasKey_inner:
+      example:
+        hasKey: true
+        name: name
+        id: 5
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        hasKey:
+          nullable: true
+          type: boolean
+      required:
+      - id
+      - name
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response:
+      example:
+        result:
+          name: name
+          orders:
+          - selfTradePrevention: 5
+            reason: reason
+            orderType: 4
+            side: Bid
+            orderId: 0
+            modifiedAt: 2
+            settled: true
+            filledAt: 9
+            clientOrderId: 0
+            filledTotal:
+              feeAmount: feeAmount
+              feeAssetId: 3
+              filledAt: 2
+              quoteAmount: quoteAmount
+              baseAmount: baseAmount
+            modifies:
+            - quantity: 0
+              price: 0
+              modifiedAt: 6
+            - quantity: 0
+              price: 0
+              modifiedAt: 6
+            cancelOnDisconnect: true
+            marketId: 6
+            postOnly: true
+            createdAt: 5
+            canceledAt: 7
+            price: 0
+            qty: 0
+            timeInForce: 1
+            fills:
+            - feeAmount: feeAmount
+              baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              baseSettled: true
+              quoteSettled: true
+              feeAssetId: 7
+              filledAt: 1
+              quoteAmount: quoteAmount
+              quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              tradeId: 4
+              baseAmount: baseAmount
+            - feeAmount: feeAmount
+              baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              baseSettled: true
+              quoteSettled: true
+              feeAssetId: 7
+              filledAt: 1
+              quoteAmount: quoteAmount
+              quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              tradeId: 4
+              baseAmount: baseAmount
+            status: open
+          - selfTradePrevention: 5
+            reason: reason
+            orderType: 4
+            side: Bid
+            orderId: 0
+            modifiedAt: 2
+            settled: true
+            filledAt: 9
+            clientOrderId: 0
+            filledTotal:
+              feeAmount: feeAmount
+              feeAssetId: 3
+              filledAt: 2
+              quoteAmount: quoteAmount
+              baseAmount: baseAmount
+            modifies:
+            - quantity: 0
+              price: 0
+              modifiedAt: 6
+            - quantity: 0
+              price: 0
+              modifiedAt: 6
+            cancelOnDisconnect: true
+            marketId: 6
+            postOnly: true
+            createdAt: 5
+            canceledAt: 7
+            price: 0
+            qty: 0
+            timeInForce: 1
+            fills:
+            - feeAmount: feeAmount
+              baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              baseSettled: true
+              quoteSettled: true
+              feeAssetId: 7
+              filledAt: 1
+              quoteAmount: quoteAmount
+              quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              tradeId: 4
+              baseAmount: baseAmount
+            - feeAmount: feeAmount
+              baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              baseSettled: true
+              quoteSettled: true
+              feeAssetId: 7
+              filledAt: 1
+              quoteAmount: quoteAmount
+              quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              tradeId: 4
+              baseAmount: baseAmount
+            status: open
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_withdraw_post_200_response_result:
+      example:
+        reason: reason
+        approved: true
+        status: pending
+      properties:
+        status:
+          description: The status of the external KYT check
+          enum:
+          - pending
+          - reject
+          - failed
+          - pendingReview
+          - automaticAccept
+          - automaticReject
+          - manualAccept
+          - manualReject
+          type: string
+        approved:
+          description: Whether the withdrawal was approved by the system
+          nullable: true
+          type: boolean
+        reason:
+          description: The reason for the withdrawal being rejected
+          nullable: true
+          type: string
+      required:
+      - status
+      type: object
+    _users_subaccount__subaccount_id__transfers_get_200_response_result_deposits_value_inner_inner:
+      example:
+        txnHash: txnHash
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        amount: amount
+        address: address
+        assetId: 0
+        txnState: pending
+        timeEst: 2000-01-23T04:56:07.000+00:00
+        fiatToCrypto: true
+        txnIndex: 6
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        assetId:
+          format: int32
+          type: integer
+        amount:
+          type: string
+        txnHash:
+          description: "Deposits that are found on-chain will have a `txn_hash` and\
+            \ `txn_index`. If it is a pending deposit determined by some external\
+            \ payment system, these can be empty"
+          nullable: true
+          type: string
+        txnIndex:
+          format: int64
+          nullable: true
+          type: integer
+        createdAt:
+          description: When we first started tracking this deposit. Probably in the
+            mempool.
+          format: date-time
+          type: string
+        updatedAt:
+          description: "If `txn_state` is `Confirmed` and `KytStatus` is accepted,\
+            \ this is the time that the deposit is credited. Otherwise, it is the\
+            \ last update (e.g if a kyt external id was created, or transaction state\
+            \ updated)."
+          format: date-time
+          type: string
+        txnState:
+          description: The deposit is credited when `Confirmed` and accepted.
+          enum:
+          - pending
+          - received
+          - confirmed
+          - dropped
+          - failed
+          type: string
+        address:
+          description: The deposit source address
+          nullable: true
+          type: string
+        timeEst:
+          description: The estimated time that this deposit will transition to `Confirmed`.
+            This is currently only applicable for `Received` deposits
+          format: date-time
+          type: string
+        fiatToCrypto:
+          type: boolean
+      required:
+      - amount
+      - assetId
+      - createdAt
+      - fiatToCrypto
+      - timeEst
+      - txnState
+      - updatedAt
+      type: object
+    _users_subaccounts_get_200_response:
+      example:
+        result:
+          ids:
+          - 0
+          - 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_subaccounts_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_address_get_200_response_result_settings:
+      example:
+        whitelistStatus: pending
+        whitelisted: true
+      properties:
+        whitelisted:
+          type: boolean
+        whitelistStatus:
+          enum:
+          - pending
+          - approved
+          - enabled
+          - disabled
+          type: string
+      required:
+      - whitelistStatus
+      - whitelisted
+      type: object
+    _users_info_get_200_response_result_subaccounts_inner:
+      example:
+        addresses:
+          "101": tb1p5gw5zm938qql65l2kqke5hx3tpmr4xkjrgy4g93qurer8eq9l2js0g6a9w
+          "103": 4t2XDAGnuePMj8QUjGxr8zSVbjztwzVVZP8Su9mn1DTV
+          "105": nrceaqQdBp2PGiidq5FYe7YzsHZv9U5Yd5
+          "106": 5DNHinCkxF42JUFpQGZiwof8g6SEdhYfDehRjG5ukfgZVhe6
+          "107": tltc1q7h6xgpcf7q685at7jzx74cud6a0j72yn2wsgkr
+          "108": cosmos17h6xgpcf7q685at7jzx74cud6a0j72yn06hwe5
+        hasOrderHistory: true
+        id: 48
+        name: working_capital
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        addresses:
+          description: Deposit address by source id
+          items:
+            items:
+              description: TODO default missing array inner type to string
+              type: string
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+        hasOrderHistory:
+          type: boolean
+      required:
+      - addresses
+      - hasOrderHistory
+      - id
+      - name
+      type: object
+    _users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner:
+      example:
+        selfTradePrevention: 5
+        reason: reason
+        orderType: 4
+        side: Bid
+        orderId: 0
+        modifiedAt: 2
+        settled: true
+        filledAt: 9
+        clientOrderId: 0
+        filledTotal:
+          feeAmount: feeAmount
+          feeAssetId: 3
+          filledAt: 2
+          quoteAmount: quoteAmount
+          baseAmount: baseAmount
+        modifies:
+        - quantity: 0
+          price: 0
+          modifiedAt: 6
+        - quantity: 0
+          price: 0
+          modifiedAt: 6
+        cancelOnDisconnect: true
+        marketId: 6
+        postOnly: true
+        createdAt: 5
+        canceledAt: 7
+        price: 0
+        qty: 0
+        timeInForce: 1
+        fills:
+        - feeAmount: feeAmount
+          baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          baseSettled: true
+          quoteSettled: true
+          feeAssetId: 7
+          filledAt: 1
+          quoteAmount: quoteAmount
+          quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tradeId: 4
+          baseAmount: baseAmount
+        - feeAmount: feeAmount
+          baseBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          baseSettled: true
+          quoteSettled: true
+          feeAssetId: 7
+          filledAt: 1
+          quoteAmount: quoteAmount
+          quoteBatchId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tradeId: 4
+          baseAmount: baseAmount
+        status: open
+      properties:
+        orderId:
+          description: "The cube-assigned order ID, also known as `ExchangeOrderId`.\
+            \ Unique per order."
+          format: int64
+          nullable: true
+          type: integer
+        marketId:
+          format: int32
+          type: integer
+        side:
+          enum:
+          - Bid
+          - Ask
+          type: string
+        price:
+          description: "Most recent price, including modifies"
+          format: uint64
+          minimum: 0
+          type: integer
+        qty:
+          description: "Most recent quantity, including modifies"
+          format: uint64
+          minimum: 0
+          type: integer
+        createdAt:
+          description: The matching-engine transact-time in nanoseconds that this
+            order was created.
+          format: int64
+          type: integer
+        modifiedAt:
+          description: The matching-engine transact-time in nanoseconds of the most
+            recent modify event. Empty if the order was never modified.
+          format: int64
+          nullable: true
+          type: integer
+        canceledAt:
+          description: "The matching-engine transact-time in nanoseconds when this\
+            \ order was cancelled. Empty if the order was never cancelled, e.g. is\
+            \ open or filled."
+          format: int64
+          nullable: true
+          type: integer
+        filledAt:
+          format: int64
+          nullable: true
+          type: integer
+        filledTotal:
+          $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_filledTotal'
+        fills:
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_fills_inner'
+          type: array
+        modifies:
+          description: "Any previous states of price/quantity associated with this\
+            \ order due to modifies. If the order has been modified, the original\
+            \ price/quantity will appear in this list."
+          items:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__orders_get_200_response_result_orders_inner_modifies_inner'
+          type: array
+        reason:
+          description: Reject reason if rejected. Cancel reason if canceled.
+          nullable: true
+          type: string
+        settled:
+          description: |-
+            The settlement status for this order's fills.
+
+            If the order has no fills, or none of the fills have been assigned to a settlement batch, then this will be `None`. This can be derived from `fills`.
+          nullable: true
+          type: boolean
+        status:
+          description: "The current status of this order. Note that if the order is\
+            \ `Open`, this is a best-effort estimation, and the order service has\
+            \ the most correct status."
+          enum:
+          - open
+          - rejected
+          - filled
+          - p-filled
+          - canceled
+          type: string
+        clientOrderId:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        timeInForce:
+          format: int32
+          nullable: true
+          type: integer
+        orderType:
+          format: int32
+          nullable: true
+          type: integer
+        selfTradePrevention:
+          format: int32
+          nullable: true
+          type: integer
+        cancelOnDisconnect:
+          nullable: true
+          type: boolean
+        postOnly:
+          nullable: true
+          type: boolean
+      required:
+      - createdAt
+      - fills
+      - marketId
+      - modifies
+      - price
+      - qty
+      - side
+      - status
+      type: object
+    _users_subaccounts_post_200_response:
+      example:
+        result:
+          id: 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_users_subaccounts_post_200_response_result'
+      required:
+      - result
+      type: object
+    _users_address_get_200_response_result:
+      example:
+        settings:
+          whitelistStatus: pending
+          whitelisted: true
+        addresses:
+        - sourceId: 0
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          address: address
+          activeSince: 2000-01-23T04:56:07.000+00:00
+          assetId: 6
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          approvedAt: 2000-01-23T04:56:07.000+00:00
+          status: pending
+        - sourceId: 0
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          address: address
+          activeSince: 2000-01-23T04:56:07.000+00:00
+          assetId: 6
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          approvedAt: 2000-01-23T04:56:07.000+00:00
+          status: pending
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/_users_address_get_200_response_result_addresses_inner'
+          type: array
+        settings:
+          $ref: '#/components/schemas/_users_address_get_200_response_result_settings'
+      required:
+      - addresses
+      - settings
+      type: object
+    _users_fee_estimate__market_id__get_200_response_result:
+      example:
+        takerFeeRatio: 1.4658129805029452
+        makerFeeRatio: 6.027456183070403
+        userKey: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        marketId: 0
+      properties:
+        marketId:
+          format: int32
+          type: integer
+        userKey:
+          format: uuid
+          type: string
+        makerFeeRatio:
+          format: double
+          type: number
+        takerFeeRatio:
+          format: double
+          type: number
+      required:
+      - makerFeeRatio
+      - marketId
+      - takerFeeRatio
+      - userKey
+      type: object
+  securitySchemes:
+    ApiKey:
+      description: |
+        The API Key ID as specified in the [API settings page](https://cube.exchange/settings/api).
+
+        Each API key has a corresponding access level that is set when the key is created.
+        - Read access only allows access to read HTTP methods (GET, HEAD, etc.).
+        - Write access allows access to all HTTP methods.
+      in: header
+      name: x-api-key
+      type: apiKey
+    ApiSignature:
+      description: |
+        The API signature string authenticating this request.
+
+        The payload to be signed is the concatenation of the byte string `cube.xyz` and the current unix epoch timestamp in seconds converted into an 8-byte little-endian array. The signature is the HMAC-SHA256 digest of the payload using the secret key associated with the specified API key.
+
+        Implementation notes:
+        - The signature is base-64 encoded with the 'standard' alphabet and
+          padding.
+
+          ```
+          ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+          ```
+        - The timestamp should be encoded as 8-byte little-endian (array of bytes)
+        - The secret key should be decoded from a hex string into a 32-byte array of
+          bytes
+      in: header
+      name: x-api-signature
+      type: apiKey
+    ApiTimestamp:
+      description: The timestamp used for signature generation.
+      in: header
+      name: x-api-timestamp
+      type: apiKey

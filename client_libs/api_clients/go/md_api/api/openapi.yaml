@@ -1,0 +1,999 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: support@cube.exchange
+    name: Cube
+    url: https://www.cube.exchange
+  title: Cube Mendelev HTTP API
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /book/{market_id}/snapshot:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: market_id
+        required: true
+        schema:
+          format: uint64
+          minimum: 0
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: mbp
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: mbo
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: levels
+        required: false
+        schema:
+          format: uint
+          minimum: 0
+          nullable: true
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+  /book/{market_id}/recent-trades:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: market_id
+        required: true
+        schema:
+          format: uint64
+          minimum: 0
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__recent_trades_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+  /tickers/snapshot:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_tickers_snapshot_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+  /parsed/tickers:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_parsed_tickers_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+  /parsed/book/{market_symbol}/snapshot:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: market_symbol
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: depth
+        required: false
+        schema:
+          format: uint
+          minimum: 0
+          nullable: true
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_parsed_book__market_symbol__snapshot_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+  /parsed/book/{market_symbol}/recent-trades:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: market_symbol
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_parsed_book__market_symbol__recent_trades_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_book__market_id__snapshot_get_500_response'
+          description: An error occurred while processing the request
+components:
+  schemas:
+    _book__market_id__snapshot_get_200_response:
+      example:
+        result:
+          lastTransactTime: 0
+          lastTradePrice: 0
+          levels:
+          - side: 1
+            quantity: 0
+            price: 0
+          - side: 1
+            quantity: 0
+            price: 0
+          marketState: unspecified
+      properties:
+        result:
+          $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result'
+      required:
+      - result
+      type: object
+    _parsed_tickers_get_200_response_result_inner:
+      example:
+        ask: 101.17
+        base_currency: SOL
+        base_volume: 29332.58
+        bid: 101.16
+        high: 109.69
+        last_price: 101.17
+        low: 100.23
+        open: 107.72
+        quote_currency: USDC
+        quote_volume: 3062431.887
+        ticker_id: SOLUSDC
+        timestamp: 1708521090000
+      properties:
+        ticker_id:
+          type: string
+        base_currency:
+          type: string
+        quote_currency:
+          type: string
+        timestamp:
+          description: The millisecond timestamp of the latest update.
+          format: uint64
+          minimum: 0
+          type: integer
+        last_price:
+          description: The last traded price. Also equal to the 24-hour closing price
+          format: double
+          nullable: true
+          type: number
+        base_volume:
+          description: The rolling 24-hour volume in the base currency.
+          format: double
+          type: number
+        quote_volume:
+          description: The rolling 24-hour volume in the quote currency.
+          format: double
+          type: number
+        bid:
+          format: double
+          nullable: true
+          type: number
+        ask:
+          format: double
+          nullable: true
+          type: number
+        high:
+          description: The rolling 24-hour highest price.
+          format: double
+          nullable: true
+          type: number
+        low:
+          description: The rolling 24-hour lowest price.
+          format: double
+          nullable: true
+          type: number
+        open:
+          description: The rolling 24-hour opening price.
+          format: double
+          nullable: true
+          type: number
+      required:
+      - base_currency
+      - base_volume
+      - quote_currency
+      - quote_volume
+      - ticker_id
+      - timestamp
+      type: object
+    _parsed_book__market_symbol__recent_trades_get_200_response:
+      example:
+        result:
+          ticker_id: ticker_id
+          trades:
+          - id: 63167016
+            p: 101.12
+            q: 0.23
+            side: Bid
+            ts: 1708542117788
+          - id: 63167016
+            p: 101.12
+            q: 0.23
+            side: Bid
+            ts: 1708542117788
+      properties:
+        result:
+          $ref: '#/components/schemas/_parsed_book__market_symbol__recent_trades_get_200_response_result'
+      required:
+      - result
+      type: object
+    _book__market_id__snapshot_get_200_response_result:
+      anyOf:
+      - $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf'
+      - $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf_1'
+    _tickers_snapshot_get_200_response_result_summaries_inner:
+      description: Rolling 24h stats.
+      example:
+        baseVolumeLo: 0
+        high: 0
+        baseVolumeHi: 0
+        low: 0
+        quoteVolumeLo: 0
+        quoteVolumeHi: 0
+        close: 0
+        open: 0
+        marketId: 0
+      properties:
+        marketId:
+          format: uint64
+          minimum: 0
+          type: integer
+        open:
+          description: 24h open price
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        close:
+          description: Latest price
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        low:
+          description: 24h low price
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        high:
+          description: 24h high price
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        baseVolumeLo:
+          description: Low 64-bits of the base quantity traded
+          format: uint64
+          minimum: 0
+          type: integer
+        baseVolumeHi:
+          description: High 64-bits of the base quantity traded
+          format: uint64
+          minimum: 0
+          type: integer
+        quoteVolumeLo:
+          description: Low 64-bits of the quote quantity traded
+          format: uint64
+          minimum: 0
+          type: integer
+        quoteVolumeHi:
+          description: High 64-bits of the quote quantity traded
+          format: uint64
+          minimum: 0
+          type: integer
+      required:
+      - baseVolumeHi
+      - baseVolumeLo
+      - marketId
+      - quoteVolumeHi
+      - quoteVolumeLo
+      type: object
+    _parsed_book__market_symbol__snapshot_get_200_response:
+      example:
+        result:
+          asks:
+          - - 101.85
+            - 0.14
+          - - 101.86
+            - 1.16
+          - - 101.87
+            - 1.85
+          - - 101.88
+            - 6.13
+          bids:
+          - - 101.84
+            - 2.56
+          - - 101.83
+            - 5.51
+          - - 101.82
+            - 5.86
+          - - 101.81
+            - 1.26
+          ticker_id: SOLUSDC
+          timestamp: 1708542402778
+      properties:
+        result:
+          $ref: '#/components/schemas/_parsed_book__market_symbol__snapshot_get_200_response_result'
+      required:
+      - result
+      type: object
+    _book__market_id__snapshot_get_200_response_result_anyOf_marketState:
+      description: The per-market matching engine state. Affects order-entry.
+      oneOf:
+      - description: Sentinel
+        enum:
+        - unspecified
+        type: string
+      - description: The market is in its normal operating state. All order operations
+          are supported.
+        enum:
+        - normalOperation
+        type: string
+      - description: "The market is in cancel-only mode. Existing orders are not automatically\
+          \ canceled, and may be filled when the market transitions back to normal-operation."
+        enum:
+        - cancelOnly
+        type: string
+    _book__market_id__snapshot_get_200_response_result_anyOf_levels_inner:
+      description: Each price level is the aggregate total quantity of orders placed
+        at that price.
+      example:
+        side: 1
+        quantity: 0
+        price: 0
+      properties:
+        price:
+          format: uint64
+          minimum: 0
+          type: integer
+        quantity:
+          format: uint64
+          minimum: 0
+          type: integer
+        side:
+          format: int32
+          type: integer
+      required:
+      - price
+      - quantity
+      - side
+      type: object
+    _book__market_id__snapshot_get_200_response_result_anyOf_1:
+      properties:
+        orders:
+          items:
+            $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf_1_orders_inner'
+          type: array
+        lastTransactTime:
+          format: uint64
+          minimum: 0
+          type: integer
+        lastTradePrice:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        marketState:
+          $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf_marketState'
+      required:
+      - lastTransactTime
+      - marketState
+      - orders
+      type: object
+    _parsed_book__market_symbol__recent_trades_get_200_response_result:
+      example:
+        ticker_id: ticker_id
+        trades:
+        - id: 63167016
+          p: 101.12
+          q: 0.23
+          side: Bid
+          ts: 1708542117788
+        - id: 63167016
+          p: 101.12
+          q: 0.23
+          side: Bid
+          ts: 1708542117788
+      properties:
+        ticker_id:
+          type: string
+        trades:
+          items:
+            $ref: '#/components/schemas/_parsed_book__market_symbol__recent_trades_get_200_response_result_trades_inner'
+          type: array
+      required:
+      - ticker_id
+      - trades
+      type: object
+    _book__market_id__snapshot_get_500_response:
+      example:
+        error: example error string
+      properties:
+        error:
+          type: string
+      required:
+      - error
+      type: object
+    _book__market_id__recent_trades_get_200_response_result:
+      example:
+        trades:
+        - aggressingSide: 1
+          restingExchangeOrderId: 0
+          price: 0
+          transactTime: 0
+          fillQuantity: 0
+          aggressingExchangeOrderId: 0
+          tradeId: 0
+        - aggressingSide: 1
+          restingExchangeOrderId: 0
+          price: 0
+          transactTime: 0
+          fillQuantity: 0
+          aggressingExchangeOrderId: 0
+          tradeId: 0
+      properties:
+        trades:
+          items:
+            $ref: '#/components/schemas/_book__market_id__recent_trades_get_200_response_result_trades_inner'
+          type: array
+      required:
+      - trades
+      type: object
+    _book__market_id__recent_trades_get_200_response_result_trades_inner:
+      example:
+        aggressingSide: 1
+        restingExchangeOrderId: 0
+        price: 0
+        transactTime: 0
+        fillQuantity: 0
+        aggressingExchangeOrderId: 0
+        tradeId: 0
+      properties:
+        tradeId:
+          description: "The ID assigned to this trade. All trades that occur from\
+            \ the same event will be assigned the same ID, and are considered to be\
+            \ an atomic batch."
+          format: uint64
+          minimum: 0
+          type: integer
+        price:
+          description: The price that this trade occurred at.
+          format: uint64
+          minimum: 0
+          type: integer
+        aggressingSide:
+          description: The side of the aggressing order.
+          format: int32
+          type: integer
+        restingExchangeOrderId:
+          description: "The [Exchange order ID](./websocket-trade-api.md#exchange-order-id)\
+            \ of the resting order."
+          format: uint64
+          minimum: 0
+          type: integer
+        fillQuantity:
+          format: uint64
+          minimum: 0
+          type: integer
+        transactTime:
+          description: "The [transact time](./websocket-trade-api.md#transact-time)\
+            \ assigned by the matching engine for this trade. All trades that occur\
+            \ from the same event will be assigned the same transact time."
+          format: uint64
+          minimum: 0
+          type: integer
+        aggressingExchangeOrderId:
+          description: "The [Exchange order ID](./websocket-trade-api.md#exchange-order-id)\
+            \ of the aggressing order."
+          format: uint64
+          minimum: 0
+          type: integer
+      required:
+      - aggressingExchangeOrderId
+      - aggressingSide
+      - fillQuantity
+      - price
+      - restingExchangeOrderId
+      - tradeId
+      - transactTime
+      type: object
+    _book__market_id__recent_trades_get_200_response:
+      example:
+        result:
+          trades:
+          - aggressingSide: 1
+            restingExchangeOrderId: 0
+            price: 0
+            transactTime: 0
+            fillQuantity: 0
+            aggressingExchangeOrderId: 0
+            tradeId: 0
+          - aggressingSide: 1
+            restingExchangeOrderId: 0
+            price: 0
+            transactTime: 0
+            fillQuantity: 0
+            aggressingExchangeOrderId: 0
+            tradeId: 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_book__market_id__recent_trades_get_200_response_result'
+      required:
+      - result
+      type: object
+    _tickers_snapshot_get_200_response_result:
+      example:
+        tops:
+        - bidQuantity: 0
+          askPrice: 0
+          impliedBidPrice: 0
+          askQuantity: 0
+          impliedBidQuantity: 0
+          bidPrice: 0
+          marketId: 0
+          marketState: 1
+          transactTime: 0
+          rolling24hPrice: 0
+          impliedAskPrice: 0
+          impliedAskQuantity: 0
+          lastPrice: 0
+        - bidQuantity: 0
+          askPrice: 0
+          impliedBidPrice: 0
+          askQuantity: 0
+          impliedBidQuantity: 0
+          bidPrice: 0
+          marketId: 0
+          marketState: 1
+          transactTime: 0
+          rolling24hPrice: 0
+          impliedAskPrice: 0
+          impliedAskQuantity: 0
+          lastPrice: 0
+        summaries:
+        - baseVolumeLo: 0
+          high: 0
+          baseVolumeHi: 0
+          low: 0
+          quoteVolumeLo: 0
+          quoteVolumeHi: 0
+          close: 0
+          open: 0
+          marketId: 0
+        - baseVolumeLo: 0
+          high: 0
+          baseVolumeHi: 0
+          low: 0
+          quoteVolumeLo: 0
+          quoteVolumeHi: 0
+          close: 0
+          open: 0
+          marketId: 0
+      properties:
+        tops:
+          items:
+            $ref: '#/components/schemas/_tickers_snapshot_get_200_response_result_tops_inner'
+          type: array
+        summaries:
+          items:
+            $ref: '#/components/schemas/_tickers_snapshot_get_200_response_result_summaries_inner'
+          type: array
+      required:
+      - summaries
+      - tops
+      type: object
+    _book__market_id__snapshot_get_200_response_result_anyOf_1_orders_inner:
+      description: A resting order.
+      properties:
+        price:
+          format: uint64
+          minimum: 0
+          type: integer
+        quantity:
+          format: uint64
+          minimum: 0
+          type: integer
+        exchangeOrderId:
+          description: "[Exchange order ID](./websocket-trade-api.md#exchange-order-id)"
+          format: uint64
+          minimum: 0
+          type: integer
+        side:
+          format: int32
+          type: integer
+        priority:
+          description: "Order priority for execution. Valid within a price level and\
+            \ side. That is, orders must first be sorted by side and price (in descending\
+            \ order for bids and ascending for asks), and then the OrderPriority within\
+            \ the level. A lower value is a higher priority."
+          format: uint64
+          minimum: 0
+          type: integer
+      required:
+      - exchangeOrderId
+      - price
+      - priority
+      - quantity
+      - side
+      type: object
+    _tickers_snapshot_get_200_response:
+      example:
+        result:
+          tops:
+          - bidQuantity: 0
+            askPrice: 0
+            impliedBidPrice: 0
+            askQuantity: 0
+            impliedBidQuantity: 0
+            bidPrice: 0
+            marketId: 0
+            marketState: 1
+            transactTime: 0
+            rolling24hPrice: 0
+            impliedAskPrice: 0
+            impliedAskQuantity: 0
+            lastPrice: 0
+          - bidQuantity: 0
+            askPrice: 0
+            impliedBidPrice: 0
+            askQuantity: 0
+            impliedBidQuantity: 0
+            bidPrice: 0
+            marketId: 0
+            marketState: 1
+            transactTime: 0
+            rolling24hPrice: 0
+            impliedAskPrice: 0
+            impliedAskQuantity: 0
+            lastPrice: 0
+          summaries:
+          - baseVolumeLo: 0
+            high: 0
+            baseVolumeHi: 0
+            low: 0
+            quoteVolumeLo: 0
+            quoteVolumeHi: 0
+            close: 0
+            open: 0
+            marketId: 0
+          - baseVolumeLo: 0
+            high: 0
+            baseVolumeHi: 0
+            low: 0
+            quoteVolumeLo: 0
+            quoteVolumeHi: 0
+            close: 0
+            open: 0
+            marketId: 0
+      properties:
+        result:
+          $ref: '#/components/schemas/_tickers_snapshot_get_200_response_result'
+      required:
+      - result
+      type: object
+    _parsed_tickers_get_200_response:
+      example:
+        result:
+        - ask: 101.17
+          base_currency: SOL
+          base_volume: 29332.58
+          bid: 101.16
+          high: 109.69
+          last_price: 101.17
+          low: 100.23
+          open: 107.72
+          quote_currency: USDC
+          quote_volume: 3062431.887
+          ticker_id: SOLUSDC
+          timestamp: 1708521090000
+        - ask: 101.17
+          base_currency: SOL
+          base_volume: 29332.58
+          bid: 101.16
+          high: 109.69
+          last_price: 101.17
+          low: 100.23
+          open: 107.72
+          quote_currency: USDC
+          quote_volume: 3062431.887
+          ticker_id: SOLUSDC
+          timestamp: 1708521090000
+      properties:
+        result:
+          items:
+            $ref: '#/components/schemas/_parsed_tickers_get_200_response_result_inner'
+          type: array
+      required:
+      - result
+      type: object
+    _book__market_id__snapshot_get_200_response_result_anyOf:
+      example:
+        lastTransactTime: 0
+        lastTradePrice: 0
+        levels:
+        - side: 1
+          quantity: 0
+          price: 0
+        - side: 1
+          quantity: 0
+          price: 0
+        marketState: unspecified
+      properties:
+        levels:
+          items:
+            $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf_levels_inner'
+          type: array
+        lastTransactTime:
+          format: uint64
+          minimum: 0
+          type: integer
+        lastTradePrice:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        marketState:
+          $ref: '#/components/schemas/_book__market_id__snapshot_get_200_response_result_anyOf_marketState'
+      required:
+      - lastTransactTime
+      - levels
+      - marketState
+      type: object
+    _tickers_snapshot_get_200_response_result_tops_inner:
+      description: Top of book
+      example:
+        bidQuantity: 0
+        askPrice: 0
+        impliedBidPrice: 0
+        askQuantity: 0
+        impliedBidQuantity: 0
+        bidPrice: 0
+        marketId: 0
+        marketState: 1
+        transactTime: 0
+        rolling24hPrice: 0
+        impliedAskPrice: 0
+        impliedAskQuantity: 0
+        lastPrice: 0
+      properties:
+        marketId:
+          format: uint64
+          minimum: 0
+          type: integer
+        transactTime:
+          description: "The [transact time](./websocket-trade-api.md#transact-time)\
+            \ of the latest book update on this market."
+          format: uint64
+          minimum: 0
+          type: integer
+        bidPrice:
+          description: The best bid price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        bidQuantity:
+          description: The total bid quantity at the best bid price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        askPrice:
+          description: The best ask price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        askQuantity:
+          description: The total ask quantity at the best ask price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        lastPrice:
+          description: The last trade price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        rolling24hPrice:
+          description: The 24h open price.
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        impliedBidPrice:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        impliedBidQuantity:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        impliedAskPrice:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        impliedAskQuantity:
+          format: uint64
+          minimum: 0
+          nullable: true
+          type: integer
+        marketState:
+          format: int32
+          type: integer
+      required:
+      - marketId
+      - marketState
+      - transactTime
+      type: object
+    _parsed_book__market_symbol__recent_trades_get_200_response_result_trades_inner:
+      example:
+        id: 63167016
+        p: 101.12
+        q: 0.23
+        side: Bid
+        ts: 1708542117788
+      properties:
+        id:
+          description: The trade ID.
+          format: uint64
+          minimum: 0
+          type: integer
+        p:
+          description: The price of the trade.
+          format: double
+          type: number
+        q:
+          description: The quantity of the trade.
+          format: double
+          type: number
+        side:
+          description: The side of the aggressing order.
+          enum:
+          - Bid
+          - Ask
+          type: string
+        ts:
+          description: The millisecond timestamp of the trade.
+          format: uint64
+          minimum: 0
+          type: integer
+      required:
+      - id
+      - p
+      - q
+      - side
+      - ts
+      type: object
+    _parsed_book__market_symbol__snapshot_get_200_response_result:
+      description: |-
+        A market-by-price order book.
+
+        Each level contains the price and the total quantity at that price. There may be multiple orders at the same price.
+      example:
+        asks:
+        - - 101.85
+          - 0.14
+        - - 101.86
+          - 1.16
+        - - 101.87
+          - 1.85
+        - - 101.88
+          - 6.13
+        bids:
+        - - 101.84
+          - 2.56
+        - - 101.83
+          - 5.51
+        - - 101.82
+          - 5.86
+        - - 101.81
+          - 1.26
+        ticker_id: SOLUSDC
+        timestamp: 1708542402778
+      properties:
+        ticker_id:
+          type: string
+        timestamp:
+          format: uint64
+          minimum: 0
+          type: integer
+        bids:
+          description: "A list of (price, quantity) pairs, sorted by price in descending\
+            \ order."
+          items:
+            items:
+              description: TODO default missing array inner type to string
+              type: string
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+        asks:
+          description: "A list of (price, quantity) pairs, sorted by price in ascending\
+            \ order."
+          items:
+            items:
+              description: TODO default missing array inner type to string
+              type: string
+            maxItems: 2
+            minItems: 2
+            type: array
+          type: array
+      required:
+      - asks
+      - bids
+      - ticker_id
+      - timestamp
+      type: object
