@@ -17,7 +17,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 
@@ -763,7 +762,6 @@ func (a *DefaultAPIService) UsersCheckGetExecute(r ApiUsersCheckGetRequest) (*Us
 type ApiUsersFeeEstimateMarketIdGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	marketId int32
 }
 
 func (r ApiUsersFeeEstimateMarketIdGetRequest) Execute() (*UsersFeeEstimateMarketIdGet200Response, *http.Response, error) {
@@ -774,14 +772,12 @@ func (r ApiUsersFeeEstimateMarketIdGetRequest) Execute() (*UsersFeeEstimateMarke
 UsersFeeEstimateMarketIdGet Method for UsersFeeEstimateMarketIdGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param marketId
  @return ApiUsersFeeEstimateMarketIdGetRequest
 */
-func (a *DefaultAPIService) UsersFeeEstimateMarketIdGet(ctx context.Context, marketId int32) ApiUsersFeeEstimateMarketIdGetRequest {
+func (a *DefaultAPIService) UsersFeeEstimateMarketIdGet(ctx context.Context) ApiUsersFeeEstimateMarketIdGetRequest {
 	return ApiUsersFeeEstimateMarketIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		marketId: marketId,
 	}
 }
 
@@ -801,7 +797,6 @@ func (a *DefaultAPIService) UsersFeeEstimateMarketIdGetExecute(r ApiUsersFeeEsti
 	}
 
 	localVarPath := localBasePath + "/users/fee-estimate/{market-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"market-id"+"}", url.PathEscape(parameterValueToString(r.marketId, "marketId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1062,10 +1057,158 @@ func (a *DefaultAPIService) UsersInfoGetExecute(r ApiUsersInfoGetRequest) (*User
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiUsersSubaccountSubaccountIdDepositsGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultAPIService
+}
+
+func (r ApiUsersSubaccountSubaccountIdDepositsGetRequest) Execute() (*UsersSubaccountSubaccountIdDepositsGet200Response, *http.Response, error) {
+	return r.ApiService.UsersSubaccountSubaccountIdDepositsGetExecute(r)
+}
+
+/*
+UsersSubaccountSubaccountIdDepositsGet Method for UsersSubaccountSubaccountIdDepositsGet
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsersSubaccountSubaccountIdDepositsGetRequest
+*/
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdDepositsGet(ctx context.Context) ApiUsersSubaccountSubaccountIdDepositsGetRequest {
+	return ApiUsersSubaccountSubaccountIdDepositsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return UsersSubaccountSubaccountIdDepositsGet200Response
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdDepositsGetExecute(r ApiUsersSubaccountSubaccountIdDepositsGetRequest) (*UsersSubaccountSubaccountIdDepositsGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UsersSubaccountSubaccountIdDepositsGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.UsersSubaccountSubaccountIdDepositsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/deposits"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiSignature"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-signature"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiTimestamp"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-timestamp"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v UsersCheckGet500Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUsersSubaccountSubaccountIdFillsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 	startTime *int64
 	endTime *int64
 	marketIds *string
@@ -1100,14 +1243,12 @@ func (r ApiUsersSubaccountSubaccountIdFillsGetRequest) Execute() (*UsersSubaccou
 UsersSubaccountSubaccountIdFillsGet Method for UsersSubaccountSubaccountIdFillsGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdFillsGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdFillsGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdFillsGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdFillsGet(ctx context.Context) ApiUsersSubaccountSubaccountIdFillsGetRequest {
 	return ApiUsersSubaccountSubaccountIdFillsGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1127,7 +1268,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdFillsGetExecute(r ApiUser
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/fills"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1254,7 +1394,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdFillsGetExecute(r ApiUser
 type ApiUsersSubaccountSubaccountIdGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 }
 
 func (r ApiUsersSubaccountSubaccountIdGetRequest) Execute() (*UsersSubaccountSubaccountIdGet200Response, *http.Response, error) {
@@ -1265,14 +1404,12 @@ func (r ApiUsersSubaccountSubaccountIdGetRequest) Execute() (*UsersSubaccountSub
 UsersSubaccountSubaccountIdGet Method for UsersSubaccountSubaccountIdGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdGet(ctx context.Context) ApiUsersSubaccountSubaccountIdGetRequest {
 	return ApiUsersSubaccountSubaccountIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1292,7 +1429,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdGetExecute(r ApiUsersSuba
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1407,7 +1543,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdGetExecute(r ApiUsersSuba
 type ApiUsersSubaccountSubaccountIdOrdersGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 	createdBefore *int64
 	limit *int32
 }
@@ -1432,14 +1567,12 @@ func (r ApiUsersSubaccountSubaccountIdOrdersGetRequest) Execute() (*UsersSubacco
 UsersSubaccountSubaccountIdOrdersGet Method for UsersSubaccountSubaccountIdOrdersGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdOrdersGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdOrdersGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdOrdersGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdOrdersGet(ctx context.Context) ApiUsersSubaccountSubaccountIdOrdersGetRequest {
 	return ApiUsersSubaccountSubaccountIdOrdersGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1459,7 +1592,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdOrdersGetExecute(r ApiUse
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/orders"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1580,7 +1712,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdOrdersGetExecute(r ApiUse
 type ApiUsersSubaccountSubaccountIdPatchRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 	usersSubaccountSubaccountIdPatchRequest *UsersSubaccountSubaccountIdPatchRequest
 }
 
@@ -1597,14 +1728,12 @@ func (r ApiUsersSubaccountSubaccountIdPatchRequest) Execute() (*UsersSubaccounts
 UsersSubaccountSubaccountIdPatch Method for UsersSubaccountSubaccountIdPatch
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdPatchRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdPatch(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdPatchRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdPatch(ctx context.Context) ApiUsersSubaccountSubaccountIdPatchRequest {
 	return ApiUsersSubaccountSubaccountIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1624,7 +1753,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdPatchExecute(r ApiUsersSu
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1744,7 +1872,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdPatchExecute(r ApiUsersSu
 type ApiUsersSubaccountSubaccountIdPositionsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 }
 
 func (r ApiUsersSubaccountSubaccountIdPositionsGetRequest) Execute() (*UsersSubaccountSubaccountIdPositionsGet200Response, *http.Response, error) {
@@ -1755,14 +1882,12 @@ func (r ApiUsersSubaccountSubaccountIdPositionsGetRequest) Execute() (*UsersSuba
 UsersSubaccountSubaccountIdPositionsGet Method for UsersSubaccountSubaccountIdPositionsGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdPositionsGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdPositionsGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdPositionsGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdPositionsGet(ctx context.Context) ApiUsersSubaccountSubaccountIdPositionsGetRequest {
 	return ApiUsersSubaccountSubaccountIdPositionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1782,7 +1907,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdPositionsGetExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/positions"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1897,7 +2021,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdPositionsGetExecute(r Api
 type ApiUsersSubaccountSubaccountIdTransfersGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 }
 
 func (r ApiUsersSubaccountSubaccountIdTransfersGetRequest) Execute() (*UsersSubaccountSubaccountIdTransfersGet200Response, *http.Response, error) {
@@ -1908,14 +2031,12 @@ func (r ApiUsersSubaccountSubaccountIdTransfersGetRequest) Execute() (*UsersSuba
 UsersSubaccountSubaccountIdTransfersGet Method for UsersSubaccountSubaccountIdTransfersGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdTransfersGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdTransfersGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdTransfersGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdTransfersGet(ctx context.Context) ApiUsersSubaccountSubaccountIdTransfersGetRequest {
 	return ApiUsersSubaccountSubaccountIdTransfersGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -1935,7 +2056,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdTransfersGetExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/transfers"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2050,7 +2170,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdTransfersGetExecute(r Api
 type ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	subaccountId int64
 }
 
 func (r ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest) Execute() (*UsersSubaccountSubaccountIdWithdrawalsGet200Response, *http.Response, error) {
@@ -2061,14 +2180,12 @@ func (r ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest) Execute() (*UsersSu
 UsersSubaccountSubaccountIdWithdrawalsGet Method for UsersSubaccountSubaccountIdWithdrawalsGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subaccountId
  @return ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest
 */
-func (a *DefaultAPIService) UsersSubaccountSubaccountIdWithdrawalsGet(ctx context.Context, subaccountId int64) ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest {
+func (a *DefaultAPIService) UsersSubaccountSubaccountIdWithdrawalsGet(ctx context.Context) ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest {
 	return ApiUsersSubaccountSubaccountIdWithdrawalsGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		subaccountId: subaccountId,
 	}
 }
 
@@ -2088,7 +2205,6 @@ func (a *DefaultAPIService) UsersSubaccountSubaccountIdWithdrawalsGetExecute(r A
 	}
 
 	localVarPath := localBasePath + "/users/subaccount/{subaccount_id}/withdrawals"
-	localVarPath = strings.Replace(localVarPath, "{"+"subaccount_id"+"}", url.PathEscape(parameterValueToString(r.subaccountId, "subaccountId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

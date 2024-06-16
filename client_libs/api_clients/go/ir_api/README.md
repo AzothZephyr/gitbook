@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**UsersCheckGet**](docs/DefaultAPI.md#userscheckget) | **Get** /users/check | 
 *DefaultAPI* | [**UsersFeeEstimateMarketIdGet**](docs/DefaultAPI.md#usersfeeestimatemarketidget) | **Get** /users/fee-estimate/{market-id} | 
 *DefaultAPI* | [**UsersInfoGet**](docs/DefaultAPI.md#usersinfoget) | **Get** /users/info | 
+*DefaultAPI* | [**UsersSubaccountSubaccountIdDepositsGet**](docs/DefaultAPI.md#userssubaccountsubaccountiddepositsget) | **Get** /users/subaccount/{subaccount_id}/deposits | 
 *DefaultAPI* | [**UsersSubaccountSubaccountIdFillsGet**](docs/DefaultAPI.md#userssubaccountsubaccountidfillsget) | **Get** /users/subaccount/{subaccount_id}/fills | 
 *DefaultAPI* | [**UsersSubaccountSubaccountIdGet**](docs/DefaultAPI.md#userssubaccountsubaccountidget) | **Get** /users/subaccount/{subaccount_id} | 
 *DefaultAPI* | [**UsersSubaccountSubaccountIdOrdersGet**](docs/DefaultAPI.md#userssubaccountsubaccountidordersget) | **Get** /users/subaccount/{subaccount_id}/orders | 
@@ -125,6 +126,7 @@ Class | Method | HTTP request | Description
  - [UsersInfoGet200ResponseResultKycStatusValue](docs/UsersInfoGet200ResponseResultKycStatusValue.md)
  - [UsersInfoGet200ResponseResultRegistration](docs/UsersInfoGet200ResponseResultRegistration.md)
  - [UsersInfoGet200ResponseResultSubaccountsInner](docs/UsersInfoGet200ResponseResultSubaccountsInner.md)
+ - [UsersSubaccountSubaccountIdDepositsGet200Response](docs/UsersSubaccountSubaccountIdDepositsGet200Response.md)
  - [UsersSubaccountSubaccountIdFillsGet200Response](docs/UsersSubaccountSubaccountIdFillsGet200Response.md)
  - [UsersSubaccountSubaccountIdFillsGet200ResponseResult](docs/UsersSubaccountSubaccountIdFillsGet200ResponseResult.md)
  - [UsersSubaccountSubaccountIdFillsGet200ResponseResultFillsInner](docs/UsersSubaccountSubaccountIdFillsGet200ResponseResultFillsInner.md)

@@ -26,9 +26,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var marketId string
-
-		resp, httpRes, err := apiClient.DefaultAPI.BookMarketIdRecentTradesGet(context.Background(), marketId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.BookMarketIdRecentTradesGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,9 +38,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var marketId string
-
-		resp, httpRes, err := apiClient.DefaultAPI.BookMarketIdSnapshotGet(context.Background(), marketId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.BookMarketIdSnapshotGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,9 +50,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var marketSymbol string
-
-		resp, httpRes, err := apiClient.DefaultAPI.ParsedBookMarketSymbolRecentTradesGet(context.Background(), marketSymbol).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.ParsedBookMarketSymbolRecentTradesGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,9 +62,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var marketSymbol string
-
-		resp, httpRes, err := apiClient.DefaultAPI.ParsedBookMarketSymbolSnapshotGet(context.Background(), marketSymbol).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.ParsedBookMarketSymbolSnapshotGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

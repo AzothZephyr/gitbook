@@ -86,9 +86,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var marketId int32
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersFeeEstimateMarketIdGet(context.Background(), marketId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersFeeEstimateMarketIdGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,13 +106,23 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DefaultAPIService UsersSubaccountSubaccountIdDepositsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdDepositsGet(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DefaultAPIService UsersSubaccountSubaccountIdFillsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdFillsGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdFillsGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,9 +134,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,9 +146,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdOrdersGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdOrdersGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -154,9 +158,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPatch(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPatch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -168,9 +170,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPositionsGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPositionsGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -182,9 +182,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdTransfersGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdTransfersGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -196,9 +194,7 @@ func Test_openapi_DefaultAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var subaccountId int64
-
-		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdWithdrawalsGet(context.Background(), subaccountId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdWithdrawalsGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

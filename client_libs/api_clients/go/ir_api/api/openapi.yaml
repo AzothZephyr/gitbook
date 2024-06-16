@@ -92,15 +92,6 @@ paths:
         ApiTimestamp: []
   /users/subaccount/{subaccount_id}:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -119,15 +110,6 @@ paths:
         ApiSignature: []
         ApiTimestamp: []
     patch:
-      parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       requestBody:
         content:
           application/json:
@@ -153,15 +135,6 @@ paths:
         ApiTimestamp: []
   /users/subaccount/{subaccount_id}/positions:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -181,15 +154,6 @@ paths:
         ApiTimestamp: []
   /users/subaccount/{subaccount_id}/transfers:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -207,17 +171,27 @@ paths:
       - ApiKey: []
         ApiSignature: []
         ApiTimestamp: []
+  /users/subaccount/{subaccount_id}/deposits:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_subaccount__subaccount_id__deposits_get_200_response'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_users_check_get_500_response'
+          description: An error occurred while processing the request
+      security:
+      - ApiKey: []
+        ApiSignature: []
+        ApiTimestamp: []
   /users/subaccount/{subaccount_id}/withdrawals:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -238,14 +212,6 @@ paths:
   /users/subaccount/{subaccount_id}/orders:
     get:
       parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       - description: "Returns the most recent orders where `created_at < created_before`.\
           \ If null, returns the most recent orders."
         explode: true
@@ -292,14 +258,6 @@ paths:
   /users/subaccount/{subaccount_id}/fills:
     get:
       parameters:
-      - explode: false
-        in: path
-        name: subaccount_id
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
       - explode: true
         in: query
         name: startTime
@@ -353,15 +311,6 @@ paths:
         ApiTimestamp: []
   /users/fee-estimate/{market-id}:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: market-id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -1248,6 +1197,40 @@ components:
       properties:
         result:
           $ref: '#/components/schemas/_users_check_get_200_response_result'
+      required:
+      - result
+      type: object
+    _users_subaccount__subaccount_id__deposits_get_200_response:
+      example:
+        result:
+          key:
+            name: name
+            inner:
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              amount: amount
+              address: address
+              assetId: 0
+              txnState: pending
+              timeEst: 2000-01-23T04:56:07.000+00:00
+              fiatToCrypto: true
+              txnIndex: 6
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - txnHash: txnHash
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              amount: amount
+              address: address
+              assetId: 0
+              txnState: pending
+              timeEst: 2000-01-23T04:56:07.000+00:00
+              fiatToCrypto: true
+              txnIndex: 6
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        result:
+          additionalProperties:
+            $ref: '#/components/schemas/_users_subaccount__subaccount_id__transfers_get_200_response_result_deposits_value'
+          type: object
       required:
       - result
       type: object
@@ -2164,8 +2147,6 @@ components:
       - baseSettled
       - feeAmount
       - filledAt
-      - marketId
-      - orderId
       - quoteAmount
       - quoteSettled
       - tradeId

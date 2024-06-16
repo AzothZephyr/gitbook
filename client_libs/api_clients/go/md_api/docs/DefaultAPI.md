@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## BookMarketIdRecentTradesGet
 
-> BookMarketIdRecentTradesGet200Response BookMarketIdRecentTradesGet(ctx, marketId).Execute()
+> BookMarketIdRecentTradesGet200Response BookMarketIdRecentTradesGet(ctx).Execute()
 
 
 
@@ -32,11 +32,10 @@ import (
 )
 
 func main() {
-	marketId := int32(56) // int32 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.BookMarketIdRecentTradesGet(context.Background(), marketId).Execute()
+	resp, r, err := apiClient.DefaultAPI.BookMarketIdRecentTradesGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.BookMarketIdRecentTradesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -48,19 +47,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**marketId** | **int32** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiBookMarketIdRecentTradesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -83,7 +74,7 @@ No authorization required
 
 ## BookMarketIdSnapshotGet
 
-> BookMarketIdSnapshotGet200Response BookMarketIdSnapshotGet(ctx, marketId).Mbp(mbp).Mbo(mbo).Levels(levels).Execute()
+> BookMarketIdSnapshotGet200Response BookMarketIdSnapshotGet(ctx).Mbp(mbp).Mbo(mbo).Levels(levels).Execute()
 
 
 
@@ -100,14 +91,13 @@ import (
 )
 
 func main() {
-	marketId := int32(56) // int32 | 
 	mbp := true // bool |  (optional) (default to false)
 	mbo := true // bool |  (optional) (default to false)
 	levels := int32(56) // int32 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.BookMarketIdSnapshotGet(context.Background(), marketId).Mbp(mbp).Mbo(mbo).Levels(levels).Execute()
+	resp, r, err := apiClient.DefaultAPI.BookMarketIdSnapshotGet(context.Background()).Mbp(mbp).Mbo(mbo).Levels(levels).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.BookMarketIdSnapshotGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,10 +110,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**marketId** | **int32** |  | 
 
 ### Other Parameters
 
@@ -132,7 +118,6 @@ Other parameters are passed through a pointer to a apiBookMarketIdSnapshotGetReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **mbp** | **bool** |  | [default to false]
  **mbo** | **bool** |  | [default to false]
  **levels** | **int32** |  | 
@@ -157,7 +142,7 @@ No authorization required
 
 ## ParsedBookMarketSymbolRecentTradesGet
 
-> ParsedBookMarketSymbolRecentTradesGet200Response ParsedBookMarketSymbolRecentTradesGet(ctx, marketSymbol).Execute()
+> ParsedBookMarketSymbolRecentTradesGet200Response ParsedBookMarketSymbolRecentTradesGet(ctx).Execute()
 
 
 
@@ -174,11 +159,10 @@ import (
 )
 
 func main() {
-	marketSymbol := "marketSymbol_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.ParsedBookMarketSymbolRecentTradesGet(context.Background(), marketSymbol).Execute()
+	resp, r, err := apiClient.DefaultAPI.ParsedBookMarketSymbolRecentTradesGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.ParsedBookMarketSymbolRecentTradesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,19 +174,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**marketSymbol** | **string** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiParsedBookMarketSymbolRecentTradesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -225,7 +201,7 @@ No authorization required
 
 ## ParsedBookMarketSymbolSnapshotGet
 
-> ParsedBookMarketSymbolSnapshotGet200Response ParsedBookMarketSymbolSnapshotGet(ctx, marketSymbol).Depth(depth).Execute()
+> ParsedBookMarketSymbolSnapshotGet200Response ParsedBookMarketSymbolSnapshotGet(ctx).Depth(depth).Execute()
 
 
 
@@ -242,12 +218,11 @@ import (
 )
 
 func main() {
-	marketSymbol := "marketSymbol_example" // string | 
 	depth := int32(56) // int32 |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.ParsedBookMarketSymbolSnapshotGet(context.Background(), marketSymbol).Depth(depth).Execute()
+	resp, r, err := apiClient.DefaultAPI.ParsedBookMarketSymbolSnapshotGet(context.Background()).Depth(depth).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.ParsedBookMarketSymbolSnapshotGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,10 +235,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**marketSymbol** | **string** |  | 
 
 ### Other Parameters
 
@@ -272,7 +243,6 @@ Other parameters are passed through a pointer to a apiParsedBookMarketSymbolSnap
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **depth** | **int32** |  | 
 
 ### Return type

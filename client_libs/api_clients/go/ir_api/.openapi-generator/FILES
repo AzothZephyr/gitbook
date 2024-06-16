@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -31,6 +32,7 @@ docs/UsersInfoGet200ResponseResultGuardianHasKeyInner.md
 docs/UsersInfoGet200ResponseResultKycStatusValue.md
 docs/UsersInfoGet200ResponseResultRegistration.md
 docs/UsersInfoGet200ResponseResultSubaccountsInner.md
+docs/UsersSubaccountSubaccountIdDepositsGet200Response.md
 docs/UsersSubaccountSubaccountIdFillsGet200Response.md
 docs/UsersSubaccountSubaccountIdFillsGet200ResponseResult.md
 docs/UsersSubaccountSubaccountIdFillsGet200ResponseResultFillsInner.md
@@ -88,6 +90,7 @@ model__users_info_get_200_response_result_guardian_has_key_inner.go
 model__users_info_get_200_response_result_kyc_status_value.go
 model__users_info_get_200_response_result_registration.go
 model__users_info_get_200_response_result_subaccounts_inner.go
+model__users_subaccount__subaccount_id__deposits_get_200_response.go
 model__users_subaccount__subaccount_id__fills_get_200_response.go
 model__users_subaccount__subaccount_id__fills_get_200_response_result.go
 model__users_subaccount__subaccount_id__fills_get_200_response_result_fills_inner.go
@@ -118,4 +121,5 @@ model__users_withdraw_post_200_response.go
 model__users_withdraw_post_200_response_result.go
 model__users_withdraw_post_request.go
 response.go
+test/api_default_test.go
 utils.go

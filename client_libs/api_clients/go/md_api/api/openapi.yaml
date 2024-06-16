@@ -12,15 +12,6 @@ paths:
   /book/{market_id}/snapshot:
     get:
       parameters:
-      - explode: false
-        in: path
-        name: market_id
-        required: true
-        schema:
-          format: uint64
-          minimum: 0
-          type: integer
-        style: simple
       - explode: true
         in: query
         name: mbp
@@ -62,16 +53,6 @@ paths:
           description: An error occurred while processing the request
   /book/{market_id}/recent-trades:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: market_id
-        required: true
-        schema:
-          format: uint64
-          minimum: 0
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -118,13 +99,6 @@ paths:
   /parsed/book/{market_symbol}/snapshot:
     get:
       parameters:
-      - explode: false
-        in: path
-        name: market_symbol
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: depth
@@ -150,14 +124,6 @@ paths:
           description: An error occurred while processing the request
   /parsed/book/{market_symbol}/recent-trades:
     get:
-      parameters:
-      - explode: false
-        in: path
-        name: market_symbol
-        required: true
-        schema:
-          type: string
-        style: simple
       responses:
         "200":
           content:

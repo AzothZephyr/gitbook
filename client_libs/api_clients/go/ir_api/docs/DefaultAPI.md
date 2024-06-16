@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**UsersCheckGet**](DefaultAPI.md#UsersCheckGet) | **Get** /users/check | 
 [**UsersFeeEstimateMarketIdGet**](DefaultAPI.md#UsersFeeEstimateMarketIdGet) | **Get** /users/fee-estimate/{market-id} | 
 [**UsersInfoGet**](DefaultAPI.md#UsersInfoGet) | **Get** /users/info | 
+[**UsersSubaccountSubaccountIdDepositsGet**](DefaultAPI.md#UsersSubaccountSubaccountIdDepositsGet) | **Get** /users/subaccount/{subaccount_id}/deposits | 
 [**UsersSubaccountSubaccountIdFillsGet**](DefaultAPI.md#UsersSubaccountSubaccountIdFillsGet) | **Get** /users/subaccount/{subaccount_id}/fills | 
 [**UsersSubaccountSubaccountIdGet**](DefaultAPI.md#UsersSubaccountSubaccountIdGet) | **Get** /users/subaccount/{subaccount_id} | 
 [**UsersSubaccountSubaccountIdOrdersGet**](DefaultAPI.md#UsersSubaccountSubaccountIdOrdersGet) | **Get** /users/subaccount/{subaccount_id}/orders | 
@@ -343,7 +344,7 @@ Other parameters are passed through a pointer to a apiUsersCheckGetRequest struc
 
 ## UsersFeeEstimateMarketIdGet
 
-> UsersFeeEstimateMarketIdGet200Response UsersFeeEstimateMarketIdGet(ctx, marketId).Execute()
+> UsersFeeEstimateMarketIdGet200Response UsersFeeEstimateMarketIdGet(ctx).Execute()
 
 
 
@@ -360,11 +361,10 @@ import (
 )
 
 func main() {
-	marketId := int32(56) // int32 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersFeeEstimateMarketIdGet(context.Background(), marketId).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersFeeEstimateMarketIdGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersFeeEstimateMarketIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -376,19 +376,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**marketId** | **int32** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUsersFeeEstimateMarketIdGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -468,9 +460,9 @@ Other parameters are passed through a pointer to a apiUsersInfoGetRequest struct
 [[Back to README]](../README.md)
 
 
-## UsersSubaccountSubaccountIdFillsGet
+## UsersSubaccountSubaccountIdDepositsGet
 
-> UsersSubaccountSubaccountIdFillsGet200Response UsersSubaccountSubaccountIdFillsGet(ctx, subaccountId).StartTime(startTime).EndTime(endTime).MarketIds(marketIds).OrderIds(orderIds).Execute()
+> UsersSubaccountSubaccountIdDepositsGet200Response UsersSubaccountSubaccountIdDepositsGet(ctx).Execute()
 
 
 
@@ -487,7 +479,65 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdDepositsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdDepositsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UsersSubaccountSubaccountIdDepositsGet`: UsersSubaccountSubaccountIdDepositsGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.UsersSubaccountSubaccountIdDepositsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountIdDepositsGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**UsersSubaccountSubaccountIdDepositsGet200Response**](UsersSubaccountSubaccountIdDepositsGet200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [ApiSignature](../README.md#ApiSignature), [ApiTimestamp](../README.md#ApiTimestamp)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UsersSubaccountSubaccountIdFillsGet
+
+> UsersSubaccountSubaccountIdFillsGet200Response UsersSubaccountSubaccountIdFillsGet(ctx).StartTime(startTime).EndTime(endTime).MarketIds(marketIds).OrderIds(orderIds).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
 	startTime := int64(789) // int64 |  (optional)
 	endTime := int64(789) // int64 |  (optional)
 	marketIds := "marketIds_example" // string |  (optional)
@@ -495,7 +545,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdFillsGet(context.Background(), subaccountId).StartTime(startTime).EndTime(endTime).MarketIds(marketIds).OrderIds(orderIds).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdFillsGet(context.Background()).StartTime(startTime).EndTime(endTime).MarketIds(marketIds).OrderIds(orderIds).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdFillsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -508,10 +558,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
 
 ### Other Parameters
 
@@ -520,7 +566,6 @@ Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **startTime** | **int64** |  | 
  **endTime** | **int64** |  | 
  **marketIds** | **string** |  | 
@@ -546,7 +591,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdGet
 
-> UsersSubaccountSubaccountIdGet200Response UsersSubaccountSubaccountIdGet(ctx, subaccountId).Execute()
+> UsersSubaccountSubaccountIdGet200Response UsersSubaccountSubaccountIdGet(ctx).Execute()
 
 
 
@@ -563,11 +608,10 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdGet(context.Background(), subaccountId).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -579,19 +623,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountIdGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -614,7 +650,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdOrdersGet
 
-> UsersSubaccountSubaccountIdOrdersGet200Response UsersSubaccountSubaccountIdOrdersGet(ctx, subaccountId).CreatedBefore(createdBefore).Limit(limit).Execute()
+> UsersSubaccountSubaccountIdOrdersGet200Response UsersSubaccountSubaccountIdOrdersGet(ctx).CreatedBefore(createdBefore).Limit(limit).Execute()
 
 
 
@@ -631,13 +667,12 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 	createdBefore := int64(789) // int64 | Returns the most recent orders where `created_at < created_before`. If null, returns the most recent orders. (optional)
 	limit := int32(56) // int32 | The maximum number of orders to return. If null, defaults to 100. The maximum is 1000. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdOrdersGet(context.Background(), subaccountId).CreatedBefore(createdBefore).Limit(limit).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdOrdersGet(context.Background()).CreatedBefore(createdBefore).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdOrdersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -650,10 +685,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
 
 ### Other Parameters
 
@@ -662,7 +693,6 @@ Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **createdBefore** | **int64** | Returns the most recent orders where &#x60;created_at &lt; created_before&#x60;. If null, returns the most recent orders. | 
  **limit** | **int32** | The maximum number of orders to return. If null, defaults to 100. The maximum is 1000. | 
 
@@ -686,7 +716,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdPatch
 
-> UsersSubaccountsPost200Response UsersSubaccountSubaccountIdPatch(ctx, subaccountId).UsersSubaccountSubaccountIdPatchRequest(usersSubaccountSubaccountIdPatchRequest).Execute()
+> UsersSubaccountsPost200Response UsersSubaccountSubaccountIdPatch(ctx).UsersSubaccountSubaccountIdPatchRequest(usersSubaccountSubaccountIdPatchRequest).Execute()
 
 
 
@@ -703,12 +733,11 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 	usersSubaccountSubaccountIdPatchRequest := *openapiclient.NewUsersSubaccountSubaccountIdPatchRequest("Name_example") // UsersSubaccountSubaccountIdPatchRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPatch(context.Background(), subaccountId).UsersSubaccountSubaccountIdPatchRequest(usersSubaccountSubaccountIdPatchRequest).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPatch(context.Background()).UsersSubaccountSubaccountIdPatchRequest(usersSubaccountSubaccountIdPatchRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -721,10 +750,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
 
 ### Other Parameters
 
@@ -733,7 +758,6 @@ Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountI
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
  **usersSubaccountSubaccountIdPatchRequest** | [**UsersSubaccountSubaccountIdPatchRequest**](UsersSubaccountSubaccountIdPatchRequest.md) |  | 
 
 ### Return type
@@ -756,7 +780,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdPositionsGet
 
-> UsersSubaccountSubaccountIdPositionsGet200Response UsersSubaccountSubaccountIdPositionsGet(ctx, subaccountId).Execute()
+> UsersSubaccountSubaccountIdPositionsGet200Response UsersSubaccountSubaccountIdPositionsGet(ctx).Execute()
 
 
 
@@ -773,11 +797,10 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPositionsGet(context.Background(), subaccountId).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdPositionsGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdPositionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -789,19 +812,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountIdPositionsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -824,7 +839,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdTransfersGet
 
-> UsersSubaccountSubaccountIdTransfersGet200Response UsersSubaccountSubaccountIdTransfersGet(ctx, subaccountId).Execute()
+> UsersSubaccountSubaccountIdTransfersGet200Response UsersSubaccountSubaccountIdTransfersGet(ctx).Execute()
 
 
 
@@ -841,11 +856,10 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdTransfersGet(context.Background(), subaccountId).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdTransfersGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdTransfersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -857,19 +871,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountIdTransfersGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -892,7 +898,7 @@ Name | Type | Description  | Notes
 
 ## UsersSubaccountSubaccountIdWithdrawalsGet
 
-> UsersSubaccountSubaccountIdWithdrawalsGet200Response UsersSubaccountSubaccountIdWithdrawalsGet(ctx, subaccountId).Execute()
+> UsersSubaccountSubaccountIdWithdrawalsGet200Response UsersSubaccountSubaccountIdWithdrawalsGet(ctx).Execute()
 
 
 
@@ -909,11 +915,10 @@ import (
 )
 
 func main() {
-	subaccountId := int64(789) // int64 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdWithdrawalsGet(context.Background(), subaccountId).Execute()
+	resp, r, err := apiClient.DefaultAPI.UsersSubaccountSubaccountIdWithdrawalsGet(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.UsersSubaccountSubaccountIdWithdrawalsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -925,19 +930,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**subaccountId** | **int64** |  | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUsersSubaccountSubaccountIdWithdrawalsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type

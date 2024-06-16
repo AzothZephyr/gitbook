@@ -7,8 +7,6 @@ then
     echo "openapi generator cli not found. Installing..."
     brew install openapi-generator
     source ~/.zshrc
-else
-    echo "OpenAPI Generator CLI is already installed."
 fi
 
 # urls of the openapi spec files
@@ -25,13 +23,13 @@ OS_API_FILE="specs/os_api_30.json"
 SPEC_DIR="specs"
 mkdir -p $SPEC_DIR
 
-# download openapi spec files, commented out as we are using fixed local files
-# curl --silent --output $SPEC_DIR/ir_api_30.json $IR_API_URL
-# curl --silent --output $SPEC_DIR/md_api_30.json $MD_API_URL
-# curl --silent --output $SPEC_DIR/os_api_30.json $OS_API_URL
+# download openapi spec files, comment out as we are using fixed local files
+curl --silent --output $SPEC_DIR/ir_api_30.json $IR_API_URL
+curl --silent --output $SPEC_DIR/md_api_30.json $MD_API_URL
+curl --silent --output $SPEC_DIR/os_api_30.json $OS_API_URL
 
 # languages to generate
-LANGUAGES=("go") #"rust" "typescript")
+LANGUAGES=("go") # "rust" "typescript")
 
 # directory structure
 BASE_DIR="api_clients"
@@ -58,9 +56,18 @@ generate_client() {
 
 # generate libraries for each language and each api file
 for lang in "${LANGUAGES[@]}"; do
+    echo 'generating ir_api client libraries for '$lang'...'
+    echo '-------------------------------------------------'
     generate_client $lang $IR_API_FILE "ir_api"
+    echo -e '-------------------------------------------------\n'
+    echo 'generating md_api client libraries for '$lang'...'
+    echo '-------------------------------------------------'
     generate_client $lang $MD_API_FILE "md_api"
+    echo -e '-------------------------------------------------\n'
+    echo 'generating os_api client libraries for '$lang'...'
+    echo '-------------------------------------------------'
     generate_client $lang $OS_API_FILE "os_api"
+    echo -e '-------------------------------------------------\n'
 done
 
 echo "Client libraries have been generated in the '$BASE_DIR' directory."

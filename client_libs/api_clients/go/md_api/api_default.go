@@ -17,7 +17,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 
@@ -27,7 +26,6 @@ type DefaultAPIService service
 type ApiBookMarketIdRecentTradesGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	marketId int32
 }
 
 func (r ApiBookMarketIdRecentTradesGetRequest) Execute() (*BookMarketIdRecentTradesGet200Response, *http.Response, error) {
@@ -38,14 +36,12 @@ func (r ApiBookMarketIdRecentTradesGetRequest) Execute() (*BookMarketIdRecentTra
 BookMarketIdRecentTradesGet Method for BookMarketIdRecentTradesGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param marketId
  @return ApiBookMarketIdRecentTradesGetRequest
 */
-func (a *DefaultAPIService) BookMarketIdRecentTradesGet(ctx context.Context, marketId int32) ApiBookMarketIdRecentTradesGetRequest {
+func (a *DefaultAPIService) BookMarketIdRecentTradesGet(ctx context.Context) ApiBookMarketIdRecentTradesGetRequest {
 	return ApiBookMarketIdRecentTradesGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		marketId: marketId,
 	}
 }
 
@@ -65,14 +61,10 @@ func (a *DefaultAPIService) BookMarketIdRecentTradesGetExecute(r ApiBookMarketId
 	}
 
 	localVarPath := localBasePath + "/book/{market_id}/recent-trades"
-	localVarPath = strings.Replace(localVarPath, "{"+"market_id"+"}", url.PathEscape(parameterValueToString(r.marketId, "marketId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.marketId < 0 {
-		return localVarReturnValue, nil, reportError("marketId must be greater than 0")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -141,7 +133,6 @@ func (a *DefaultAPIService) BookMarketIdRecentTradesGetExecute(r ApiBookMarketId
 type ApiBookMarketIdSnapshotGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	marketId int32
 	mbp *bool
 	mbo *bool
 	levels *int32
@@ -170,14 +161,12 @@ func (r ApiBookMarketIdSnapshotGetRequest) Execute() (*BookMarketIdSnapshotGet20
 BookMarketIdSnapshotGet Method for BookMarketIdSnapshotGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param marketId
  @return ApiBookMarketIdSnapshotGetRequest
 */
-func (a *DefaultAPIService) BookMarketIdSnapshotGet(ctx context.Context, marketId int32) ApiBookMarketIdSnapshotGetRequest {
+func (a *DefaultAPIService) BookMarketIdSnapshotGet(ctx context.Context) ApiBookMarketIdSnapshotGetRequest {
 	return ApiBookMarketIdSnapshotGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		marketId: marketId,
 	}
 }
 
@@ -197,14 +186,10 @@ func (a *DefaultAPIService) BookMarketIdSnapshotGetExecute(r ApiBookMarketIdSnap
 	}
 
 	localVarPath := localBasePath + "/book/{market_id}/snapshot"
-	localVarPath = strings.Replace(localVarPath, "{"+"market_id"+"}", url.PathEscape(parameterValueToString(r.marketId, "marketId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.marketId < 0 {
-		return localVarReturnValue, nil, reportError("marketId must be greater than 0")
-	}
 
 	if r.mbp != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "mbp", r.mbp, "")
@@ -288,7 +273,6 @@ func (a *DefaultAPIService) BookMarketIdSnapshotGetExecute(r ApiBookMarketIdSnap
 type ApiParsedBookMarketSymbolRecentTradesGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	marketSymbol string
 }
 
 func (r ApiParsedBookMarketSymbolRecentTradesGetRequest) Execute() (*ParsedBookMarketSymbolRecentTradesGet200Response, *http.Response, error) {
@@ -299,14 +283,12 @@ func (r ApiParsedBookMarketSymbolRecentTradesGetRequest) Execute() (*ParsedBookM
 ParsedBookMarketSymbolRecentTradesGet Method for ParsedBookMarketSymbolRecentTradesGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param marketSymbol
  @return ApiParsedBookMarketSymbolRecentTradesGetRequest
 */
-func (a *DefaultAPIService) ParsedBookMarketSymbolRecentTradesGet(ctx context.Context, marketSymbol string) ApiParsedBookMarketSymbolRecentTradesGetRequest {
+func (a *DefaultAPIService) ParsedBookMarketSymbolRecentTradesGet(ctx context.Context) ApiParsedBookMarketSymbolRecentTradesGetRequest {
 	return ApiParsedBookMarketSymbolRecentTradesGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		marketSymbol: marketSymbol,
 	}
 }
 
@@ -326,7 +308,6 @@ func (a *DefaultAPIService) ParsedBookMarketSymbolRecentTradesGetExecute(r ApiPa
 	}
 
 	localVarPath := localBasePath + "/parsed/book/{market_symbol}/recent-trades"
-	localVarPath = strings.Replace(localVarPath, "{"+"market_symbol"+"}", url.PathEscape(parameterValueToString(r.marketSymbol, "marketSymbol")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -399,7 +380,6 @@ func (a *DefaultAPIService) ParsedBookMarketSymbolRecentTradesGetExecute(r ApiPa
 type ApiParsedBookMarketSymbolSnapshotGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultAPIService
-	marketSymbol string
 	depth *int32
 }
 
@@ -416,14 +396,12 @@ func (r ApiParsedBookMarketSymbolSnapshotGetRequest) Execute() (*ParsedBookMarke
 ParsedBookMarketSymbolSnapshotGet Method for ParsedBookMarketSymbolSnapshotGet
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param marketSymbol
  @return ApiParsedBookMarketSymbolSnapshotGetRequest
 */
-func (a *DefaultAPIService) ParsedBookMarketSymbolSnapshotGet(ctx context.Context, marketSymbol string) ApiParsedBookMarketSymbolSnapshotGetRequest {
+func (a *DefaultAPIService) ParsedBookMarketSymbolSnapshotGet(ctx context.Context) ApiParsedBookMarketSymbolSnapshotGetRequest {
 	return ApiParsedBookMarketSymbolSnapshotGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		marketSymbol: marketSymbol,
 	}
 }
 
@@ -443,7 +421,6 @@ func (a *DefaultAPIService) ParsedBookMarketSymbolSnapshotGetExecute(r ApiParsed
 	}
 
 	localVarPath := localBasePath + "/parsed/book/{market_symbol}/snapshot"
-	localVarPath = strings.Replace(localVarPath, "{"+"market_symbol"+"}", url.PathEscape(parameterValueToString(r.marketSymbol, "marketSymbol")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
