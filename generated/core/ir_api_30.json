@@ -1068,6 +1068,149 @@
         ]
       }
     },
+    "/users/subaccount/{subaccount_id}/deposits": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "subaccount_id",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "result"
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                          "inner",
+                          "name"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "inner": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "amount",
+                                "assetId",
+                                "createdAt",
+                                "fiatToCrypto",
+                                "timeEst",
+                                "txnState",
+                                "updatedAt"
+                              ],
+                              "properties": {
+                                "assetId": {
+                                  "type": "integer",
+                                  "format": "int32"
+                                },
+                                "amount": {
+                                  "type": "string"
+                                },
+                                "txnHash": {
+                                  "description": "Deposits that are found on-chain will have a `txn_hash` and `txn_index`. If it is a pending deposit determined by some external payment system, these can be empty",
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "txnIndex": {
+                                  "type": "integer",
+                                  "format": "int64",
+                                  "nullable": true
+                                },
+                                "createdAt": {
+                                  "description": "When we first started tracking this deposit. Probably in the mempool.",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "updatedAt": {
+                                  "description": "If `txn_state` is `Confirmed` and `KytStatus` is accepted, this is the time that the deposit is credited. Otherwise, it is the last update (e.g if a kyt external id was created, or transaction state updated).",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "txnState": {
+                                  "description": "The deposit is credited when `Confirmed` and accepted.",
+                                  "type": "string",
+                                  "enum": [
+                                    "pending",
+                                    "received",
+                                    "confirmed",
+                                    "dropped",
+                                    "failed"
+                                  ]
+                                },
+                                "address": {
+                                  "description": "The deposit source address",
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "timeEst": {
+                                  "description": "The estimated time that this deposit will transition to `Confirmed`. This is currently only applicable for `Received` deposits",
+                                  "type": "string",
+                                  "format": "date-time"
+                                },
+                                "fiatToCrypto": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An error occurred while processing the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "error": "example error string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": [],
+            "ApiSignature": [],
+            "ApiTimestamp": []
+          }
+        ]
+      }
+    },
     "/users/subaccount/{subaccount_id}/withdrawals": {
       "parameters": [
         {
